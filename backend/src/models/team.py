@@ -15,11 +15,18 @@ class Team(db.Model):
     # relationships
     players = db.relationship('Player', back_populates = 'team')
     coaches = db.relationship('Coach', back_populates = 'team')
+    permits = db.relationship('Permit', back_populates = 'team')
     school = db.relationship('School', back_populates = 'teams')
     division = db.relationship('Division', back_populates = 'teams')
 
     # serialize rules
     serialize_rules = ['-team.players']
+    serialize_rules = ['-team.coaches']
+    serialize_rules = ['-team.permits']
+    serialize_rules = ['-teams.school']
+    serialize_rules = ['-teams.division']
+
+    # validations
     
 
     def __repr__(self):

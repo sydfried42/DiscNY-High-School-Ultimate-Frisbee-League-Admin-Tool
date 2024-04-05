@@ -23,6 +23,8 @@ class Player(db.Model):
     # serialize rules
     serialize_rules = ['-team.players']
 
+    # validations
+
 
     def __repr__(self):
         return f"<Player {self.first_name} {self.last_name} >"

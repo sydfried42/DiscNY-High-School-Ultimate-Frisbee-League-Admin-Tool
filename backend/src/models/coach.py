@@ -20,6 +20,8 @@ class Coach(db.Model):
     # serialize rules
     serialize_rules = ['-team.coaches']
 
+    # validations
+
 
     def __repr__(self):
         return f"<Coach {self.first_name} {self.last_name} >"

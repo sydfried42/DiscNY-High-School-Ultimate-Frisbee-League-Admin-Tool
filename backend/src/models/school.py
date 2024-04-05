@@ -13,5 +13,7 @@ class School(db.Model):
     # serialize rules
     serialize_rules = ['-teams.school']
 
+    # validations
+
     def __repr__(self):
         return f"<School {self.name} >"

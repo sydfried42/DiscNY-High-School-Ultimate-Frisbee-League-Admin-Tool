@@ -13,5 +13,7 @@ class Division(db.Model):
     # serialize rules
     serialize_rules = ['-teams.division']
 
+    # validations
+
     def __repr__(self):
         return f"<Division {self.name} >"

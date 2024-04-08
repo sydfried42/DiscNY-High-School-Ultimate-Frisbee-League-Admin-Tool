@@ -13,11 +13,11 @@ class Permit(db.Model):
     field_id = db.Column(db.Integer, db.ForeignKey('fields.id'))
 
     # relationships
-    teams = db.relationship('Team', back_populates = 'permits')
+    team = db.relationship('Team', back_populates = 'permits')
     field = db.relationship('Field', back_populates = 'permits')
 
     # serialize rules
-    serialize_rules = ['-permits.team']
-    serialize_rules = ['-permits.field']
+    serialize_rules = ['-team.permits']
+    serialize_rules = ['-field.permits']
 
     # validations

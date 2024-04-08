@@ -20,11 +20,11 @@ class Team(db.Model):
     division = db.relationship('Division', back_populates = 'teams')
 
     # serialize rules
-    serialize_rules = ['-team.players']
-    serialize_rules = ['-team.coaches']
-    serialize_rules = ['-team.permits']
-    serialize_rules = ['-teams.school']
-    serialize_rules = ['-teams.division']
+    serialize_rules = ['-players.team']
+    serialize_rules = ['-coaches.team']
+    serialize_rules = ['-permits.team']
+    serialize_rules = ['-school.teams']
+    serialize_rules = ['-division.teams']
 
     # validations
     

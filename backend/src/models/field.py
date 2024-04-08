@@ -16,8 +16,8 @@ class Field(db.Model):
     parks = db.relationship('Park', back_populates = 'field')
 
     # serialize rules
-    serialize_rules = ['-field.permits']
-    serialize_rules = ['-field.parks']
+    serialize_rules = ['-permits.field']
+    serialize_rules = ['-parks.field']
 
     # validations
     @validates('size')
@@ -25,4 +25,4 @@ class Field(db.Model):
         if new_size == "M" or "L":
             return new_size
         else:
-            raise ValueError ('not valid {key}')
+            raise ValueError (f'not valid {key}')

@@ -12,13 +12,13 @@ class Park(db.Model):
     fields = db.relationship('Field', back_populates = 'park')
 
     # serialize rules
-    serialize_rules = ['-park.fields']
+    serialize_rules = ['-fields.park']
 
     # validation: must be Manhattan, Brooklyn, Bronx, Randall's, Queens
     @validates('borough')
     def validates_borough(self, key, new_borough):
         borough_list = ["Manhattan", "Brooklyn", "Bronx", "Randall's", "Queens"]
         if new_borough not in borough_list:
-            raise ValueError('not valid {key}')
+            raise ValueError(f'not valid {key}')
         else:
             return new_borough

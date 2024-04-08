@@ -24,6 +24,11 @@ class Player(db.Model):
     serialize_rules = ['-team.players']
 
     # validations
+    @validates('email')
+    def validate_email(self, key, address):
+        if '@' not in address:
+            raise ValueError("enter valid email")
+        return address
 
 
     def __repr__(self):

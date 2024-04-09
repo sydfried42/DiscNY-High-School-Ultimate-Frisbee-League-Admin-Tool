@@ -1,4 +1,5 @@
 from sqlalchemy_serializer import SerializerMixin
+from sqlalchemy.orm import validates
 from models import db
 
 class Permit(db.Model):
@@ -17,7 +18,6 @@ class Permit(db.Model):
     field = db.relationship('Field', back_populates = 'permits')
 
     # serialize rules
-    serialize_rules = ['-team.permits']
-    serialize_rules = ['-field.permits']
+    serialize_rules = ['-team.permits', '-field.permits']
 
     # validations

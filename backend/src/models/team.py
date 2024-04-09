@@ -1,4 +1,5 @@
 from sqlalchemy_serializer import SerializerMixin
+from sqlalchemy.orm import validates
 from models import db
 
 class Team(db.Model):
@@ -20,11 +21,7 @@ class Team(db.Model):
     division = db.relationship('Division', back_populates = 'teams')
 
     # serialize rules
-    serialize_rules = ['-players.team']
-    serialize_rules = ['-coaches.team']
-    serialize_rules = ['-permits.team']
-    serialize_rules = ['-school.teams']
-    serialize_rules = ['-division.teams']
+    serialize_rules = ['-players.team', '-coaches.team', '-permits.team', '-school.teams', '-division.teams']
 
     # validations
     

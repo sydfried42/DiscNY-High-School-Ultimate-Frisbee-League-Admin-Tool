@@ -9,11 +9,11 @@ class Player(db.Model):
     first_name = db.Column(db.String)
     last_name = db.Column(db.String)
     pronouns = db.Column(db.String)
-    usau = db.Column(db.Integer)
+    usau = db.Column(db.Integer, unique=True)
     email = db.Column(db.String)
     birthday = db.Column(db.Date)
     grade = db.Column(db.String)
-    team_role = db.Column(db.String)
+    is_captain = db.Column(db.Boolean)
 
     #foriegn key
     team_id = db.Column(db.Integer, db.ForeignKey('teams.id'))

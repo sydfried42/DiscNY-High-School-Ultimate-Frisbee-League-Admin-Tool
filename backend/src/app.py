@@ -29,3 +29,34 @@ db.init_app(app)
 def home():
     return ''
 
+# TEAMS
+# 'GET' and 'POST' all
+
+# 'GET' by id
+
+
+# SCHOOLS
+# 'GET' and 'POST' all
+
+# 'GET' by id
+
+
+# DIVISIONS
+# 'GET' all
+
+# 'GET' by id
+
+
+# PLAYERS
+# 'GET' and 'POST' all
+
+# 'GET', 'PATCH', and 'DELETE' by id
+
+
+# COACHES
+# 'GET' and 'POST' all
+
+# 'GET', 'PATCH', and 'DELETE' by id
+
+
+

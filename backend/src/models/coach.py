@@ -9,7 +9,7 @@ class Coach(db.Model):
     first_name = db.Column(db.String)
     last_name = db.Column(db.String)
     pronouns = db.Column(db.String)
-    usau = db.Column(db.Integer)
+    usau = db.Column(db.Integer, unique=True)
     team_role = db.Column(db.String)
 
     #foriegn key

@@ -2,14 +2,14 @@ from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.orm import validates
 from models import db
 
-class Permit(db.Model):
+class Permit(db.Model, SerializerMixin):
     __tablename__ = 'permits'
 
     id = db.Column(db.Integer, primary_key=True)
     code = db.Column(db.Integer)
     date = db.Column(db.DateTime, nullable=False)
 
-    # foriegn key
+    # foreign key
     team_id = db.Column(db.Integer, db.ForeignKey('teams.id'))
     field_id = db.Column(db.Integer, db.ForeignKey('fields.id'))
 

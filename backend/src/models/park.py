@@ -3,7 +3,7 @@ from sqlalchemy.orm import validates
 from models import db
 
 
-class Park(db.Model):
+class Park(db.Model, SerializerMixin):
     __tablename__ = 'parks'
 
     id = db.Column(db.Integer, primary_key=True)

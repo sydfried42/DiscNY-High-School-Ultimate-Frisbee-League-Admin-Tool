@@ -2,7 +2,7 @@ from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.orm import validates
 from models import db
 
-class Player(db.Model):
+class Player(db.Model, SerializerMixin):
     __tablename__ = 'players'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -11,11 +11,11 @@ class Player(db.Model):
     pronouns = db.Column(db.String)
     usau = db.Column(db.Integer, unique=True)
     email = db.Column(db.String)
-    birthday = db.Column(db.Date)
+    birthday = db.Column(db.String)
     grade = db.Column(db.String)
-    is_captain = db.Column(db.Boolean)
+    is_captain = db.Column(db.String)
 
-    #foriegn key
+    #foreign key
     team_id = db.Column(db.Integer, db.ForeignKey('teams.id'))
 
     # relationships

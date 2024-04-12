@@ -61,8 +61,31 @@ def team_by_id(id):
 
 # SCHOOLS
 # 'GET' and 'POST' all
+@app.route('/schools', methods=['GET', 'POST'])
+def all_schools():
+    if request.method == 'GET':
+        schools = School.query.all()
+        return [school.to_dict() for school in schools], 200
+    elif request.method == 'POST':
+        json_data = request.get_json()
+
+        try:
+            new_school = School(
+                name=json_data.get('name'),
+            )
+        except ValueError as e:
+            return {'errors': [str(e)]}, 400
+        db.session.add(new_school)
+        db.session.commit()
+        return new_school.to_dict(), 200
 
 # 'GET' by id
+@app.route('/schools/<int:id>', methods=['GET'])
+def school_by_id(id):
+    school = School.query.filter(School.id == id).first()
+    if not school:
+        return {'error': 'school not found'}, 404
+    return school.to_dict(), 200
 
 
 # DIVISIONS

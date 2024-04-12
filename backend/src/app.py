@@ -29,6 +29,7 @@ db.init_app(app)
 def home():
     return ''
 
+
 # TEAMS
 # 'GET' and 'POST' all
 @app.route('/teams', methods=['GET', 'POST'])
@@ -116,6 +117,7 @@ def division_by_id(id):
         return {'error': 'division not found'}, 404
     return division.to_dict(), 200
 
+
 # PLAYERS
 # 'GET' and 'POST' all
 @app.route('/players', methods=['GET', 'POST'])
@@ -170,8 +172,49 @@ def player_by_id(id):
 
 # COACHES
 # 'GET' and 'POST' all
+@app.route('/coaches', methods=['GET', 'POST'])
+def all_coaches():
+    if request.method == 'GET':
+        coaches = Coach.query.all()
+        return [coach.to_dict() for coach in coaches], 200
+    elif request.method == 'POST':
+        json_data = request.get_json()
+
+        try:
+            new_coach = Coach(
+                first_name=json_data.get('first_name'),
+                last_name=json_data.get('last_name'),
+                pronouns=json_data.get('pronouns'),
+                usau=json_data.get('usau'),
+                team_role=json_data.get('team_role')
+            )
+        except ValueError as e:
+            return {'errors': [str(e)]}, 400
+        db.session.add(new_coach)
+        db.session.commit()
+        return new_coach.to_dict(), 200
 
 # 'GET', 'PATCH', and 'DELETE' by id
+@app.route('/coaches/<int:id>', methods=['GET', 'PATCH', 'DELETE'])
+def coach_by_id(id):
+    coach = Coach.query.filter(Coach.id == id).first()
+    if not coach:
+        return {'error': 'coach not found'}, 404
 
+    elif request.method == 'GET':
+        return coach.to_dict(), 200
+    elif request.method == 'PATCH':
+        json_data=request.get_json()
+
+        for field in json_data:
+            value = json_data[field]
+            setattr(coach, field, value)
+        db.session.add(coach)
+        db.session.commit()
+        return coach.to_dict(), 200
+    elif request.method == 'DELETE':
+        db.session.delete(coach)
+        db.session.commit()
+        return {}, 204
 
 

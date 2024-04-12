@@ -90,9 +90,31 @@ def school_by_id(id):
 
 # DIVISIONS
 # 'GET' all
+@app.route('/divisions', methods=['GET', 'POST'])
+def all_divisions():
+    if request.method == 'GET':
+        divisions = Division.query.all()
+        return [division.to_dict() for division in divisions], 200
+    elif request.method == 'POST':
+        json_data = request.get_json()
+
+        try:
+            new_division = Division(
+                name=json_data.get('name'),
+            )
+        except ValueError as e:
+            return {'errors': [str(e)]}, 400
+        db.session.add(new_division)
+        db.session.commit()
+        return new_division.to_dict(), 200
 
 # 'GET' by id
-
+@app.route('/divisions/<int:id>', methods=['GET'])
+def division_by_id(id):
+    division = Division.query.filter(Division.id == id).first()
+    if not division:
+        return {'error': 'division not found'}, 404
+    return division.to_dict(), 200
 
 # PLAYERS
 # 'GET' and 'POST' all

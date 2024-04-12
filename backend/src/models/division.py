@@ -2,7 +2,7 @@ from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.orm import validates
 from models import db
 
-class Division(db.Model):
+class Division(db.Model, SerializerMixin):
     __tablename__ = 'divisions'
 
     id = db.Column(db.Integer, primary_key=True)

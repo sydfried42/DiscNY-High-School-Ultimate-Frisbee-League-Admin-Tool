@@ -2,7 +2,7 @@ from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.orm import validates
 from models import db
 
-class School(db.Model):
+class School(db.Model, SerializerMixin):
     __tablename__ = 'schools'
 
     id = db.Column(db.Integer, primary_key=True)

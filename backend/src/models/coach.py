@@ -2,7 +2,7 @@ from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.orm import validates
 from models import db
 
-class Coach(db.Model):
+class Coach(db.Model, SerializerMixin):
     __tablename__ = 'coaches'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -12,7 +12,7 @@ class Coach(db.Model):
     usau = db.Column(db.Integer, unique=True)
     team_role = db.Column(db.String)
 
-    #foriegn key
+    #foreign key
     team_id = db.Column(db.Integer, db.ForeignKey('teams.id'))
 
     # relationships

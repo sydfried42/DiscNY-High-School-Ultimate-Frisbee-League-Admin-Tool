@@ -2,14 +2,14 @@ from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.orm import validates
 from models import db
 
-class Team(db.Model):
+class Team(db.Model, SerializerMixin):
     __tablename__ = 'teams'
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
-    registration = db.Column(db.Boolean)
+    registration = db.Column(db.String)
 
-    #foriegn key
+    #foreign key
     school_id = db.Column(db.Integer, db.ForeignKey('schools.id'))
     division_id = db.Column(db.Integer, db.ForeignKey('divisions.id'))
 

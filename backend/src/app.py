@@ -10,7 +10,7 @@ from models.permit import Permit
 
 from flask_restful import Api, Resource
 from flask_migrate import Migrate
-from flask import Flask
+from flask import Flask, request
 import os
 
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
@@ -31,8 +31,27 @@ def home():
 
 # TEAMS
 # 'GET' and 'POST' all
+@app.route('/teams', methods=['GET', 'POST'])
+def all_teams():
+    if request.method == 'GET':
+        teams = Team.query.all()
+        return [team.to_dict() for team in teams], 200
+    elif request.method == 'POST':
+        json_data = request.get_json()
+
+        try:
+            new_team = Team(
+                name=json_data.get('name'),
+                registration=json_data.get('registration')
+            )
+        except ValueError as e:
+            return {'errors': [str(e)]}, 400
+        db.session.add(new_team)
+        db.session.commit()
+        return new_team.to_dict(), 200
 
 # 'GET' by id
+
 
 
 # SCHOOLS

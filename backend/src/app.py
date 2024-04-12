@@ -118,8 +118,54 @@ def division_by_id(id):
 
 # PLAYERS
 # 'GET' and 'POST' all
+@app.route('/players', methods=['GET', 'POST'])
+def all_players():
+    if request.method == 'GET':
+        players = Player.query.all()
+        return [player.to_dict() for player in players], 200
+    elif request.method == 'POST':
+        json_data = request.get_json()
+
+        try:
+            new_player = Player(
+                first_name=json_data.get('first_name'),
+                last_name=json_data.get('last_name'),
+                pronouns=json_data.get('pronouns'),
+                usau=json_data.get('usau'),
+                email=json_data.get('email'),
+                birthday=json_data.get('birthday'),
+                grade=json_data.get('grade'),
+                is_captain=json_data.get('is_captain')
+
+            )
+        except ValueError as e:
+            return {'errors': [str(e)]}, 400
+        db.session.add(new_player)
+        db.session.commit()
+        return new_player.to_dict(), 200
 
 # 'GET', 'PATCH', and 'DELETE' by id
+@app.route('/players/<int:id>', methods=['GET', 'PATCH', 'DELETE'])
+def player_by_id(id):
+    player = Player.query.filter(Player.id == id).first()
+    if not player:
+        return {'error': 'player not found'}, 404
+
+    elif request.method == 'GET':
+        return player.to_dict(), 200
+    elif request.method == 'PATCH':
+        json_data=request.get_json()
+
+        for field in json_data:
+            value = json_data[field]
+            setattr(player, field, value)
+        db.session.add(player)
+        db.session.commit()
+        return player.to_dict(), 200
+    elif request.method == 'DELETE':
+        db.session.delete(player)
+        db.session.commit()
+        return {}, 204
 
 
 # COACHES

@@ -51,7 +51,12 @@ def all_teams():
         return new_team.to_dict(), 200
 
 # 'GET' by id
-
+@app.route('/teams/<int:id>', methods=['GET'])
+def team_by_id(id):
+    team = Team.query.filter(Team.id == id).first()
+    if not team:
+        return {'error': 'team not found'}, 404
+    return team.to_dict(), 200
 
 
 # SCHOOLS

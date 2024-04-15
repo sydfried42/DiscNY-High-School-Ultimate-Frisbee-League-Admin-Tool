@@ -1,8 +1,8 @@
-"""inisialize
+"""initialize database
 
-Revision ID: 82dd03e2d823
+Revision ID: c50228c2df6e
 Revises: 
-Create Date: 2024-04-12 14:24:12.340571
+Create Date: 2024-04-12 15:36:00.794388
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '82dd03e2d823'
+revision = 'c50228c2df6e'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -81,9 +81,9 @@ def upgrade():
     sa.Column('pronouns', sa.String(), nullable=True),
     sa.Column('usau', sa.Integer(), nullable=True),
     sa.Column('email', sa.String(), nullable=True),
-    sa.Column('birthday', sa.Date(), nullable=True),
+    sa.Column('birthday', sa.String(), nullable=True),
     sa.Column('grade', sa.String(), nullable=True),
-    sa.Column('is_captain', sa.Boolean(), nullable=True),
+    sa.Column('is_captain', sa.String(), nullable=True),
     sa.Column('team_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['team_id'], ['teams.id'], name=op.f('fk_players_team_id_teams')),
     sa.PrimaryKeyConstraint('id', name=op.f('pk_players')),

@@ -87,6 +87,7 @@ function CodeOfConduct() {
           <ol>For Extreme Heat and Cold:</ol>
             <li>When the Heat Index reaches 100F (see NOAA/National Weather Service Heat Index Chart), play must be suspended.  In colder temperatures and/or wetter conditions, it is important to be cognizant of conditions conducive to hypothermia. When the Wind Chill Temperature drops to or is below 32F (see NOAA/National Weather Service Wind Chill Chart), play must be suspended.</li>
           <ol>Play may also be suspended at the discretion of both coaches and/or the League Officers.</ol>
+          <li></li>
     </div>
   )
 }

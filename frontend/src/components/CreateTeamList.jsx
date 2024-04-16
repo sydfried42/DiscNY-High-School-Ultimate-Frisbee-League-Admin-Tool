@@ -2,11 +2,7 @@ import React from 'react'
 import CoachItem from './CoachItem'
 import PlayerItem from './PlayerItem'
 
-function CreateTeamList({ currentTeamPlayers, currentTeamCoaches, setCurrentTeamPlayers, setCurrentTeamCoaches }) {
-  // create useState to delete individuals
-  // do we need a useEffect to submit full team roster?
-//   console.log(currentTeamCoaches)
-//   console.log(currentTeamPlayers)
+function CreateTeamList({ currentTeamPlayers, currentTeamCoaches, setCurrentTeamPlayers, setCurrentTeamCoaches, division, school, team }) {
 
     function handleDeletePlayer(currentTeamPlayer) {
         let newPlayerList = currentTeamPlayers.filter((item) =>
@@ -22,11 +18,29 @@ function CreateTeamList({ currentTeamPlayers, currentTeamCoaches, setCurrentTeam
         setCurrentTeamCoaches(newCoachList)
     }
 
+    function handleSubmit(e) {
+        e.preventDefault()
+
+        let newTeam ={
+            division, school, team, currentTeamPlayers, currentTeamCoaches
+        }
+        console.log(newTeam)
+
+        // fetch(???, {
+        //     method: "POST",
+        //     headers: {
+        //         "Content-Type": "Application/JSON",
+        //     },
+        //     body: JSON.stringify(newTeam),
+        // })
+        // .then(response=>response.json())
+    }
+
+
   return (
     <>
-    <div>CreateTeamList</div>
-    {/* import useState for division, school, as team to be printed at the top of the page */}
-    <div>Division ~ School ~ Team</div>
+    <div>Current Team</div>
+    <div>{division ? division : "Please select division above"} ~ {school ? school : "Please select school above"} ~ {team ? team : "Please select team above"}</div>
     <div>Players: {
         currentTeamPlayers.map((currentTeamPlayer)=>
         <PlayerItem 
@@ -44,6 +58,9 @@ function CreateTeamList({ currentTeamPlayers, currentTeamCoaches, setCurrentTeam
             handleDeleteCoach={handleDeleteCoach}
         />
         )}
+    </div>
+    <div>
+        <button type="submit" onClick={handleSubmit}>Create Team</button>
     </div>
     </>
   )

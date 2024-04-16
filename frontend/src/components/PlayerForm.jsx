@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 /* setting the form states */
-function PlayerForm() {
+function PlayerForm({ currentTeamPlayers, setCurrentTeamPlayers }) {
   const [newPlayer, setNewPlayer] = useState({
     first_name: '',
     last_name: '',
@@ -16,15 +16,7 @@ function PlayerForm() {
   /* setting the form submit */
   function handleSubmit(e) {
     e.preventDefault();
-
-    fetch('??', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'Application/JSON',
-      },
-      body: JSON.stringify(newPlayer),
-    // }).then(() => ?? 
-  });
+    setCurrentTeamPlayers([...currentTeamPlayers, newPlayer])
   }
   
   

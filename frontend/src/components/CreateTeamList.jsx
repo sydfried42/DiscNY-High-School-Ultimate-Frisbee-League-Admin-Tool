@@ -1,10 +1,13 @@
 import React from 'react'
-import TeammateItem from './TeammateItem'
+import CoachItem from './CoachItem'
+import PlayerItem from './PlayerItem'
 
-
-function CreateTeamList() {
+function CreateTeamList({ currentTeamPlayers, currentTeamCoaches }) {
   // create useState to delete individuals
   // do we need a useEffect to submit full team roster?
+  console.log(currentTeamCoaches)
+  console.log(currentTeamPlayers)
+
   return (
     <>
     <div>CreateTeamList</div>

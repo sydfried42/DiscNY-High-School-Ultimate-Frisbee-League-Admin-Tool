@@ -26,7 +26,7 @@ function RegistrationPage() {
         <button onClick={handleClick}>{showCoachForm ? "Add a Player" : "Add a Coach"}</button>
       </div>
       {showCoachForm ? <CoachForm currentTeamCoaches={currentTeamCoaches} setCurrentTeamCoaches={setCurrentTeamCoaches}/> : <PlayerForm currentTeamPlayers={currentTeamPlayers} setCurrentTeamPlayers={setCurrentTeamPlayers}/>}
-      <CreateTeamList currentTeamPlayers={currentTeamPlayers} currentTeamCoaches={currentTeamCoaches}/> {/* choosing a team will populate a list from the saved db, onClick from PlayerForm and CoachForm also populates, useState to delete individuals, one big post request to Flask */}
+      <CreateTeamList currentTeamPlayers={currentTeamPlayers} setCurrentTeamPlayers={setCurrentTeamPlayers} currentTeamCoaches={currentTeamCoaches} setCurrentTeamCoaches={setCurrentTeamCoaches}/> {/* choosing a team will populate a list from the saved db, onClick from PlayerForm and CoachForm also populates, useState to delete individuals, one big post request to Flask */}
     </div>
   )
 }

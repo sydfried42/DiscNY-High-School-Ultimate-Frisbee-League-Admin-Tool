@@ -26,28 +26,22 @@ function RegistrationPage() {
   function handleDivisionChange(e) {
     const selectedDivision = e.target.value;
     setDivision(selectedDivision);
-    console.log(selectedDivision);
   }
   
   function handleSchoolChange(e) {
     const selectedSchool = e.target.value;
     setSchool(selectedSchool);
-    console.log(selectedSchool);
   }
 
   function handleTeamChange(e) {
     const selectedTeam = e.target.value;
     setTeam(selectedTeam);
-    console.log(selectedTeam);
   }
-
-  // console.log(currentTeamPlayers)
-  // console.log(currentTeamCoaches)
 
   return (
     <div>
       <h1>RegistrationPage</h1> {/* title to page */}
-      <div> {/* pull and map through divisions, creating buttons (?), create state to toggle between the 4 divisions and persist, post pressed button to top of CreateTeamList */}
+      <div> 
         <h2>Division</h2>
         <select onChange={handleDivisionChange}>
           <option value="">-- Select a division --</option>
@@ -58,7 +52,7 @@ function RegistrationPage() {
           ))}
         </select>
       </div> 
-      <div> {/* pull and map through schools in a drop down menu, add school if not in db, create state to persist choice, post pressed choice to top of CreateTeamList */}
+      <div> 
         <h2>School</h2>
         <select onChange={handleSchoolChange}>
           <option value="">-- Select a school --</option>
@@ -69,7 +63,7 @@ function RegistrationPage() {
           ))}
         </select>
       </div> 
-      <div>{/* pull and map through team names in a drop down menu, add team name if not in db, create state to persist choice, post pressed choice to top of CreateTeamList */}
+      <div>
         <h2>Team Name</h2>
         <select onChange={handleTeamChange}>
           <option value="">-- Select a team --</option>
@@ -85,7 +79,7 @@ function RegistrationPage() {
         <button onClick={handleClick}>{showCoachForm ? "Add a Player" : "Add a Coach"}</button>
       </div>
       {showCoachForm ? <CoachForm currentTeamCoaches={currentTeamCoaches} setCurrentTeamCoaches={setCurrentTeamCoaches}/> : <PlayerForm currentTeamPlayers={currentTeamPlayers} setCurrentTeamPlayers={setCurrentTeamPlayers}/>}
-      <CreateTeamList currentTeamPlayers={currentTeamPlayers} setCurrentTeamPlayers={setCurrentTeamPlayers} currentTeamCoaches={currentTeamCoaches} setCurrentTeamCoaches={setCurrentTeamCoaches}/> {/* choosing a team will populate a list from the saved db, onClick from PlayerForm and CoachForm also populates, useState to delete individuals, one big post request to Flask */}
+      <CreateTeamList division={division} school={school} team={team} currentTeamPlayers={currentTeamPlayers} setCurrentTeamPlayers={setCurrentTeamPlayers} currentTeamCoaches={currentTeamCoaches} setCurrentTeamCoaches={setCurrentTeamCoaches}/> 
     </div>
   )
 }

@@ -1,8 +1,11 @@
 import React from 'react'
 
-function PlayerItem() {
+function PlayerItem({ currentTeamPlayer, handleDeletePlayer }) {
   return (
-    <div>PlayerItem</div>
+    <div>
+        <h3>{currentTeamPlayer.first_name} {currentTeamPlayer.last_name} {currentTeamPlayer.pronouns}</h3>
+        <button onClick={()=>handleDeletePlayer(currentTeamPlayer)}>X</button>
+    </div>
   )
 }
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import CoachItem from './CoachItem'
 import PlayerItem from './PlayerItem'
+// will need to import useEffect
 
 function CreateTeamList({ currentTeamPlayers, currentTeamCoaches, setCurrentTeamPlayers, setCurrentTeamCoaches, division, school, team }) {
 
@@ -26,14 +27,14 @@ function CreateTeamList({ currentTeamPlayers, currentTeamCoaches, setCurrentTeam
         }
         console.log(newTeam)
 
-        // fetch(???, {
-        //     method: "POST",
-        //     headers: {
-        //         "Content-Type": "Application/JSON",
-        //     },
-        //     body: JSON.stringify(newTeam),
-        // })
-        // .then(response=>response.json())
+        fetch("http://127.0.0.1:5555/team-creation", {
+            method: "POST",
+            headers: {
+                "Content-Type": "Application/JSON",
+            },
+            body: JSON.stringify(newTeam),
+        })
+        .then(response=>response.json())
     }
 
 

@@ -3,7 +3,9 @@ import DirectoryList from './DirectoryList';
 
 function DirectoryPage() {
   return (
-    <div>DirectoryPage</div>
+    <div>
+      <DirectoryList />
+    </div>
   )
 }
 

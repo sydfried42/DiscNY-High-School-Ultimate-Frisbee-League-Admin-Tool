@@ -11,12 +11,14 @@ from models.permit import Permit
 from flask_restful import Api, Resource
 from flask_migrate import Migrate
 from flask import Flask, request
+from flask_cors import CORS
 import os
 
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 
 
 app = Flask(__name__)
+CORS(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URI']
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.json.compact = False
@@ -142,6 +144,8 @@ def all_players():
             )
         except ValueError as e:
             return {'errors': [str(e)]}, 400
+
+        
         db.session.add(new_player)
         db.session.commit()
         return new_player.to_dict(), 200
@@ -218,3 +222,43 @@ def coach_by_id(id):
         return {}, 204
 
 
+#Team Creation for JSON Object from CreateTeamList on Frontend
+@app.route('/team-creation', methods=['GET','POST'])
+def use_json_object():
+    if request.method == 'POST':
+        json_data = request.get_json()
+
+        players=json_data['currentTeamPlayers']
+        coaches=json_data['currentTeamCoaches']
+
+        for player in players:
+            try: 
+                new_player = Player(
+                    first_name=player.get('first_name'),
+                    last_name=player.get('last_name'),
+                    pronouns=player.get('pronouns'),
+                    usau=player.get('usau'),
+                    email=player.get('email'),
+                    birthday=player.get('birthday'),
+                    grade=player.get('grade'),
+                    is_captain=player.get('is_captain')
+                )
+            except ValueError as e:
+                return {'errors': [str(e)]}, 400
+            db.session.add(new_player)
+            db.session.commit()
+
+        for coach in coaches:
+            try:
+                new_coach = Coach(
+                    first_name=coach.get('first_name'),
+                    last_name=coach.get('last_name'),
+                    pronouns=coach.get('pronouns'),
+                    usau=coach.get('usau'),
+                    team_role=coach.get('team_role')
+                )
+            except ValueError as e:
+                return {'errors': [str(e)]}, 400
+            db.session.add(new_coach)
+            db.session.commit()
+        return new_coach.to_dict(), 200

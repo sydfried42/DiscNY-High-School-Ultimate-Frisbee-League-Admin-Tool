@@ -3,6 +3,7 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  background-color: #778899
 }
 
 /* Navigation Bar Styling */
@@ -14,13 +15,14 @@
 .nav-link{
   display: inline-block;
   box-sizing: border-box;
+  border-radius: 5px;
   padding: 5px;
   margin: 0 6px 6px;
-  background: purple;
+  background: #BC8F8F;
   text-decoration: none;
   text-align: center;
   font-size: min(10vw, 15px) ;
-  color: silver;
+  color: #2F4F4F;
 }
 
 .active {

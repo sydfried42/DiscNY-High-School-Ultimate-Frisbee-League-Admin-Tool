@@ -5,10 +5,15 @@
   text-align: center;
 }
 
+/* Navigation Bar Styling */
+.nav-bar {
+  padding: 10px;
+  border-bottom: 5px solid white;
+}
+
 .nav-link{
   display: inline-block;
   box-sizing: border-box;
-  /* width: 60px; */
   padding: 5px;
   margin: 0 6px 6px;
   background: purple;
@@ -21,6 +26,7 @@
 .active {
   color: greenyellow;
 }
+
 
 /* Directory Styling */
 .directory-row, .directory-heading {
@@ -41,4 +47,24 @@
 
 .table-title {
   text-align: left
+}
+
+/* Code of Conduct Styling */
+.code-of-conduct {
+  align-items: center;
+}
+
+/*Header Styling*/
+.header {
+  border-bottom: 5px solid white;
+  padding: 5px
+}
+
+.header-image {
+  width: 50%;
+}
+
+/* Footer Styling */
+.footer {
+  border-top: 5px solid white;
 }

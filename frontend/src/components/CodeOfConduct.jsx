@@ -5,7 +5,7 @@ import React from 'react'
 
 function CodeOfConduct() {
   return (
-    <div>
+    <div className="code-of-conduct">
       <p>Please find a brief summary of Disc NY's rules and regulations below. A full readout of the entire code of conduct can be found <a href="https://docs.google.com/document/d/1ezM0TL7Zr61_aFgj_ewsYi1CNhklkVYdAh2prJhxk6A/edit">here.</a></p>
       <h2>Mission Statement</h2>
       <p>

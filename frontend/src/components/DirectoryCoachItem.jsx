@@ -1,8 +1,14 @@
 import React from 'react'
 
-function DirectoryCoachItem() {
+function DirectoryCoachItem({ id, first_name, last_name, pronouns, usau, team_role }) {
   return (
-    <div>DirectoryCoachItem</div>
+    <tr className="directory-row">
+      <td className="directory-data">{first_name}</td>
+      <td className="directory-data">{last_name}</td>
+      <td className="directory-data">{pronouns}</td>
+      <td className="directory-data">{usau}</td>
+      <td className="directory-data">{team_role}</td>
+    </tr>
   )
 }
 

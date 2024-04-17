@@ -40,48 +40,53 @@ function RegistrationPage() {
 
   return (
     <div>
-      <h1>RegistrationPage</h1> {/* title to page */}
-      <div> 
-        <h2>Division</h2>
-        <select onChange={handleDivisionChange}>
-          <option value="">-- Select a division --</option>
-          {divisionsList.map((division) => (
-            <option key={division} value={division}>
-              {division}
-            </option>
-          ))}
-        </select>
-      </div> 
-      <div> 
-        <h2>School</h2>
-        <select onChange={handleSchoolChange}>
-          <option value="">-- Select a school --</option>
-          {schoolsList.map((school) => (
-            <option key={school} value={school}>
-              {school}
-            </option>
-          ))}
-        </select>
-      </div> 
-      <div>
-        <h2>Team Name</h2>
-        <select onChange={handleTeamChange}>
-          <option value="">-- Select a team --</option>
-          {teamsList.map((team) => (
-            <option key={team} value={team}>
-              {team}
-            </option>
-          ))}
-        </select>
+        <h1>RegistrationPage</h1> {/* title to page */}
+      <div className='reg_division_school_team'>
+        <div> 
+          <h2>Division</h2>
+          <select onChange={handleDivisionChange}>
+            <option value="">-- Select a division --</option>
+            {divisionsList.map((division) => (
+              <option key={division} value={division}>
+                {division}
+              </option>
+            ))}
+          </select>
+        </div> 
+        <div> 
+          <h2>School</h2>
+          <select onChange={handleSchoolChange}>
+            <option value="">-- Select a school --</option>
+            {schoolsList.map((school) => (
+              <option key={school} value={school}>
+                {school}
+              </option>
+            ))}
+          </select>
+        </div> 
+        <div>
+          <h2>Team Name</h2>
+          <select onChange={handleTeamChange}>
+            <option value="">-- Select a team --</option>
+            {teamsList.map((team) => (
+              <option key={team} value={team}>
+                {team}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
-      <br></br> 
-      <div>
-        <button onClick={handleClick}>{showCoachForm ? "Add a Player" : "Add a Coach"}</button>
-      </div>
-      {showCoachForm ? <CoachForm currentTeamCoaches={currentTeamCoaches} setCurrentTeamCoaches={setCurrentTeamCoaches}/> : <PlayerForm currentTeamPlayers={currentTeamPlayers} setCurrentTeamPlayers={setCurrentTeamPlayers}/>}
-      <CreateTeamList division={division} school={school} team={team} currentTeamPlayers={currentTeamPlayers} setCurrentTeamPlayers={setCurrentTeamPlayers} currentTeamCoaches={currentTeamCoaches} setCurrentTeamCoaches={setCurrentTeamCoaches}/> 
+        <br></br>
+      <div className='player_coach_form'>
+        <div>
+          <button className='toggle' onClick={handleClick}>{showCoachForm ? "Add a Player" : "Add a Coach"}</button>
+        </div>
+        {showCoachForm ? <CoachForm currentTeamCoaches={currentTeamCoaches} setCurrentTeamCoaches={setCurrentTeamCoaches}/> : <PlayerForm currentTeamPlayers={currentTeamPlayers} setCurrentTeamPlayers={setCurrentTeamPlayers}/>}
+        <CreateTeamList division={division} school={school} team={team} currentTeamPlayers={currentTeamPlayers} setCurrentTeamPlayers={setCurrentTeamPlayers} currentTeamCoaches={currentTeamCoaches} setCurrentTeamCoaches={setCurrentTeamCoaches}/> 
+      </div> 
     </div>
   )
 }
 
 export default RegistrationPage
+

@@ -21,3 +21,24 @@
 .active {
   color: greenyellow;
 }
+
+/* Directory Styling */
+.directory-row, .directory-heading {
+  border-bottom: 1px solid white;
+}
+
+.directory-table {
+  border-collapse: collapse;
+  width: 100%
+}
+
+.directory-data, .directory-heading {
+  padding: 5px;
+  text-align: left;
+}
+
+.directory-row:hover {background-color: #8FBC8F}
+
+.table-title {
+  text-align: left
+}

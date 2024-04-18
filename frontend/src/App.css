@@ -3,24 +3,32 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  background-color: #778899
+}
+
+/* Navigation Bar Styling */
+.nav-bar {
+  padding: 10px;
+  border-bottom: 5px solid white;
 }
 
 .nav-link{
   display: inline-block;
   box-sizing: border-box;
-  /* width: 60px; */
+  border-radius: 5px;
   padding: 5px;
   margin: 0 6px 6px;
-  background: purple;
+  background: #BC8F8F;
   text-decoration: none;
   text-align: center;
   font-size: min(10vw, 15px) ;
-  color: silver;
+  color: #2F4F4F;
 }
 
 .active {
   color: greenyellow;
 }
+
 
 /* Directory Styling */
 .directory-row, .directory-heading {
@@ -41,4 +49,24 @@
 
 .table-title {
   text-align: left
+}
+
+/* Code of Conduct Styling */
+.code-of-conduct {
+  align-items: center;
+}
+
+/*Header Styling*/
+.header {
+  border-bottom: 5px solid white;
+  padding: 5px
+}
+
+.header-image {
+  width: 50%;
+}
+
+/* Footer Styling */
+.footer {
+  border-top: 5px solid white;
 }

@@ -23,7 +23,7 @@ function PlayerForm({ currentTeamPlayers, setCurrentTeamPlayers }) {
   
   return (
     <div className="newPlayer">
-      <h1>New Player</h1>
+      <h2 className="form-title">New Player</h2>
       <form className='pform' onSubmit={handleSubmit}>
         <label htmlFor="first name">First Name</label>
         <input

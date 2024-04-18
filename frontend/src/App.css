@@ -1,5 +1,5 @@
 #root {
-  max-width: 1280px;
+  max-width: 100%;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
@@ -63,7 +63,7 @@
 }
 
 .header-image {
-  width: 50%;
+  width: 60%;
 }
 
 /* Footer Styling */
@@ -88,6 +88,10 @@
 
 .createTeamList {
   padding: 30px;
+  border-style: double;
+  width: 40%;
+  border-radius: 10px;
+  align-items: center;
 }
 
 .currentTeam {
@@ -101,20 +105,28 @@
   display: flex;
   justify-content: right;
   align-items: end;
+  margin-right: 170px
 }
 
 .toggle {
   display: flex;
   justify-content: left;
-  margin-left: 110px;
+  margin-left: 185px;
 }
 
 .newPlayer {
   padding: 30px;
+  width: 400px;
 }
 
 .newCoach {
   padding: 30px;
+  width: 400px;
+}
+
+.newCoach, .newPlayer {
+  border-style: double;
+  border-radius: 10px;
 }
 
 .pform {
@@ -129,4 +141,26 @@
   justify-content: center;
   flex-direction: column;
   padding: 0 60px;
+}
+
+.title {
+  font-size: 30px;
+  text-decoration: underline overline;
+}
+
+.form-title, .table-title {
+  text-decoration: underline
+}
+
+.drop-down-title {
+  text-decoration: underline
+}
+
+.select-menus {
+  height: 25px;
+  border-radius: 5px
+}
+
+.delete-button {
+  justify-content: center;
 }

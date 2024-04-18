@@ -40,11 +40,12 @@ function CreateTeamList({ currentTeamPlayers, currentTeamCoaches, setCurrentTeam
 
   return (
     <div className='createTeamList'>
-        <h1>Current Team</h1>
+        <h2 className="form-title">Current Team</h2>
         <div>{division ? division : "Please select division above"} ~ {school ? school : "Please select school above"} ~ {team ? team : "Please select team above"}</div>
         <br></br>
         <div className='currentTeam'>
-            <div>Players: {
+            <div>
+                <h2>Players:</h2>{
                 currentTeamPlayers.map((currentTeamPlayer)=>
                 <PlayerItem 
                     key={currentTeamPlayer.id}
@@ -53,7 +54,8 @@ function CreateTeamList({ currentTeamPlayers, currentTeamCoaches, setCurrentTeam
                 />
                 )}
             </div>
-            <div>Coaches: {
+            <div>
+                <h2>Coaches:</h2>{
                 currentTeamCoaches.map((currentTeamCoach)=>
                 <CoachItem 
                     key={currentTeamCoach.id}

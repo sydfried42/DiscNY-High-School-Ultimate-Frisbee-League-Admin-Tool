@@ -22,7 +22,7 @@ function CoachForm({ currentTeamCoaches, setCurrentTeamCoaches }) {
   return (
     <div className="newCoach">
       <h1>New Coach</h1>
-      <form onSubmit={handleSubmit}>
+      <form className='cform' onSubmit={handleSubmit}>
         <label htmlFor="first name">First Name</label>
         <input
           required
@@ -86,6 +86,8 @@ function CoachForm({ currentTeamCoaches, setCurrentTeamCoaches }) {
             setNewCoach({ ...newCoach, team_role: e.target.value })
           }
         ></input>
+        <br></br>
+        <br></br>
 
         <button type="submit">Add Coach</button>
       </form>

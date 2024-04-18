@@ -39,31 +39,35 @@ function CreateTeamList({ currentTeamPlayers, currentTeamCoaches, setCurrentTeam
 
 
   return (
-    <>
-    <div>Current Team</div>
-    <div>{division ? division : "Please select division above"} ~ {school ? school : "Please select school above"} ~ {team ? team : "Please select team above"}</div>
-    <div>Players: {
-        currentTeamPlayers.map((currentTeamPlayer)=>
-        <PlayerItem 
-            key={currentTeamPlayer.id}
-            currentTeamPlayer={currentTeamPlayer}
-            handleDeletePlayer={handleDeletePlayer}
-        />
-        )}
+    <div className='createTeamList'>
+        <h1>Current Team</h1>
+        <div>{division ? division : "Please select division above"} ~ {school ? school : "Please select school above"} ~ {team ? team : "Please select team above"}</div>
+        <br></br>
+        <div className='currentTeam'>
+            <div>Players: {
+                currentTeamPlayers.map((currentTeamPlayer)=>
+                <PlayerItem 
+                    key={currentTeamPlayer.id}
+                    currentTeamPlayer={currentTeamPlayer}
+                    handleDeletePlayer={handleDeletePlayer}
+                />
+                )}
+            </div>
+            <div>Coaches: {
+                currentTeamCoaches.map((currentTeamCoach)=>
+                <CoachItem 
+                    key={currentTeamCoach.id}
+                    currentTeamCoach={currentTeamCoach}
+                    handleDeleteCoach={handleDeleteCoach}
+                />
+                )}
+            </div>
+        </div>
+        <br></br>
+        <div className='fullSubmit'>
+            <button type="submit" onClick={handleSubmit}>Create Team</button>
+        </div>
     </div>
-    <div>Coaches: {
-        currentTeamCoaches.map((currentTeamCoach)=>
-        <CoachItem 
-            key={currentTeamCoach.id}
-            currentTeamCoach={currentTeamCoach}
-            handleDeleteCoach={handleDeleteCoach}
-        />
-        )}
-    </div>
-    <div>
-        <button type="submit" onClick={handleSubmit}>Create Team</button>
-    </div>
-    </>
   )
 }
 

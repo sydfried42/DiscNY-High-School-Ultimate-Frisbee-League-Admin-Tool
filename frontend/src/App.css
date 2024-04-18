@@ -70,3 +70,63 @@
 .footer {
   border-top: 5px solid white;
 }
+
+/* Registration Styling */
+.reg_division_school_team {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.player_coach_form {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  gap: 30px;
+  margin: 20px;
+}
+
+.createTeamList {
+  padding: 30px;
+}
+
+.currentTeam {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  gap: 60px;
+}
+
+.fullSubmit {
+  display: flex;
+  justify-content: right;
+  align-items: end;
+}
+
+.toggle {
+  display: flex;
+  justify-content: left;
+  margin-left: 110px;
+}
+
+.newPlayer {
+  padding: 30px;
+}
+
+.newCoach {
+  padding: 30px;
+}
+
+.pform {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 60px;
+}
+
+.cform {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 60px;
+}

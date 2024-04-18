@@ -29,7 +29,7 @@ function DirectoryList() {
   return (
     <div>
       <table className="directory-table">
-        <p className="table-title">Coaches</p>
+        <h2 className="table-title">League Coaches</h2>
         <tr className="directory-heading">
           <th className="directory-heading">First Name</th>
           <th className="directory-heading">Last Name</th>
@@ -50,7 +50,7 @@ function DirectoryList() {
           )}
       </table>
       <table className="directory-table">
-        <p className="table-title">Players</p>
+        <h2 className="table-title">League Players</h2>
         <tr className="directory-heading">
           <th className="directory-heading">First Name</th>
           <th className="directory-heading">Last Name</th>

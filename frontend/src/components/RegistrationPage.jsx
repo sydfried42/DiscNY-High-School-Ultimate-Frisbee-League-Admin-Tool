@@ -40,11 +40,11 @@ function RegistrationPage() {
 
   return (
     <div>
-        <h1>Registration Page</h1> {/* title to page */}
+        <h1 className="title">Registration Page</h1>
       <div className='reg_division_school_team'>
         <div> 
-          <h2>Division</h2>
-          <select onChange={handleDivisionChange}>
+          <h2 className="drop-down-title">Division</h2>
+          <select onChange={handleDivisionChange} className="select-menus">
             <option value="">-- Select a division --</option>
             {divisionsList.map((division) => (
               <option key={division} value={division}>
@@ -54,8 +54,8 @@ function RegistrationPage() {
           </select>
         </div> 
         <div> 
-          <h2>School</h2>
-          <select onChange={handleSchoolChange}>
+          <h2 className="drop-down-title">School</h2>
+          <select onChange={handleSchoolChange} className="select-menus">
             <option value="">-- Select a school --</option>
             {schoolsList.map((school) => (
               <option key={school} value={school}>
@@ -65,8 +65,8 @@ function RegistrationPage() {
           </select>
         </div> 
         <div>
-          <h2>Team Name</h2>
-          <select onChange={handleTeamChange}>
+          <h2 className="drop-down-title">Team Name</h2>
+          <select onChange={handleTeamChange} className="select-menus">
             <option value="">-- Select a team --</option>
             {teamsList.map((team) => (
               <option key={team} value={team}>

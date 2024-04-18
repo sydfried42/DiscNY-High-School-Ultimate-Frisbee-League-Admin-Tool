@@ -3,7 +3,7 @@ import React from 'react'
 function Home() {
   return (
     <>
-      <h1>Welcome to DiscNY's High School League 2025 Homepage!</h1>
+      <h1 className="title">Welcome to DiscNY's High School League 2025 Homepage!</h1>
         <p>This is our revamped hub for DiscNY's High School League programming and information.</p>
         <h2>League Information</h2>
         <p>Dates: Mon, 10 March — Sun, 11 May 2025</p>

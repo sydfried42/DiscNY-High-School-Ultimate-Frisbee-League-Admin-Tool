@@ -21,7 +21,7 @@ function CoachForm({ currentTeamCoaches, setCurrentTeamCoaches }) {
   
   return (
     <div className="newCoach">
-      <h1>New Coach</h1>
+      <h2 className="form-title">New Coach</h2>
       <form className='cform' onSubmit={handleSubmit}>
         <label htmlFor="first name">First Name</label>
         <input

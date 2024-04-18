@@ -103,7 +103,7 @@ function PlayerForm({ currentTeamPlayers, setCurrentTeamPlayers }) {
         <input
           type="text" // change to bool
           name="is_captain"
-          placeholder="02/17/1993"
+          placeholder="Yes/No"
           value={newPlayer.is_captain}
           onChange={(e) =>
             setNewPlayer({ ...newPlayer, is_captain: e.target.value })

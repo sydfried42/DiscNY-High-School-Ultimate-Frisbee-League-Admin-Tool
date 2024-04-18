@@ -24,7 +24,7 @@ function PlayerForm({ currentTeamPlayers, setCurrentTeamPlayers }) {
   return (
     <div className="newPlayer">
       <h1>New Player</h1>
-      <form onSubmit={handleSubmit}>
+      <form className='pform' onSubmit={handleSubmit}>
         <label htmlFor="first name">First Name</label>
         <input
           required
@@ -109,6 +109,8 @@ function PlayerForm({ currentTeamPlayers, setCurrentTeamPlayers }) {
             setNewPlayer({ ...newPlayer, is_captain: e.target.value })
           }
         ></input>
+        <br></br>
+        <br></br>
 
         <button type="submit">Add Player</button>
       </form>

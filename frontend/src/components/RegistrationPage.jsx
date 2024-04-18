@@ -40,7 +40,7 @@ function RegistrationPage() {
 
   return (
     <div>
-        <h1>RegistrationPage</h1> {/* title to page */}
+        <h1>Registration Page</h1> {/* title to page */}
       <div className='reg_division_school_team'>
         <div> 
           <h2>Division</h2>
@@ -77,12 +77,14 @@ function RegistrationPage() {
         </div>
       </div>
         <br></br>
-      <div className='player_coach_form'>
-        <div>
-          <button className='toggle' onClick={handleClick}>{showCoachForm ? "Add a Player" : "Add a Coach"}</button>
+        <br></br>
+        <br></br>
+        <div className='toggle'>
+          <button onClick={handleClick}>{showCoachForm ? "Add a Player" : "Add a Coach"}</button>
         </div>
+      <div className='player_coach_form'>
         {showCoachForm ? <CoachForm currentTeamCoaches={currentTeamCoaches} setCurrentTeamCoaches={setCurrentTeamCoaches}/> : <PlayerForm currentTeamPlayers={currentTeamPlayers} setCurrentTeamPlayers={setCurrentTeamPlayers}/>}
-        <CreateTeamList division={division} school={school} team={team} currentTeamPlayers={currentTeamPlayers} setCurrentTeamPlayers={setCurrentTeamPlayers} currentTeamCoaches={currentTeamCoaches} setCurrentTeamCoaches={setCurrentTeamCoaches}/> 
+        <CreateTeamList className="teamList" division={division} school={school} team={team} currentTeamPlayers={currentTeamPlayers} setCurrentTeamPlayers={setCurrentTeamPlayers} currentTeamCoaches={currentTeamCoaches} setCurrentTeamCoaches={setCurrentTeamCoaches}/> 
       </div> 
     </div>
   )

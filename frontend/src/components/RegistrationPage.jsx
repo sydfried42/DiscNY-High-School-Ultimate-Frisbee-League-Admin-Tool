@@ -9,8 +9,9 @@ function RegistrationPage() {
   const [currentTeamPlayers, setCurrentTeamPlayers] = useState([]);
   const [currentTeamCoaches, setCurrentTeamCoaches] = useState([]);
   const [division, setDivision] = useState("");
-  const [divList, setDivList] = useState([])
+  const [divList, setDivList] = useState([]);
   const [school, setSchool] = useState("");
+  const [schooList, setSchooList] = useState([]);
   const [team, setTeam] = useState("");
 
   useEffect(()=> {
@@ -22,14 +23,23 @@ function RegistrationPage() {
     })},
   []);
 
-  // pull for school and team
+  useEffect(()=> {
+    fetch("http://127.0.0.1:5555/schools")
+    .then(response=>response.json())
+    .then(data=>{
+      console.log(data)
+      setSchooList(data.map((item)=>item.name))
+    })},
+  []);
+
+  // pull for team
 
 
 
 //  let divisionsList = ["Club Girls/Non-Binary", "Club Open A", "Club Open B", "Interscholastic Open"] 
 
  // for phase-5 replace this with the database
- let schoolsList = ["Avenues the World School", "Bard Early College High School", "Baruch College Campus High School", "Beacon", "Berkeley Carroll", "Bronx High School of Science", "Brooklyn Latin", "Brooklyn Technical High School", "Columbia Secondary School", "Edward R. Murrow High School", "Fieldston", "Followers of Jesus School", "Fordham Preparatory School", "Heschel", "Horace Mann", "HSMSE", "Hunter College High School", "MCSM", "Packer Collegiate", "Ramaz", "Regis High School", "Riverdale Country School", "SAR High School", "Schechter", "Stuyvesant", "The Geneva School of Manhattan"]
+//  let schoolsList = ["Avenues the World School", "Bard Early College High School", "Baruch College Campus High School", "Beacon", "Berkeley Carroll", "Bronx High School of Science", "Brooklyn Latin", "Brooklyn Technical High School", "Columbia Secondary School", "Edward R. Murrow High School", "Fieldston", "Followers of Jesus School", "Fordham Preparatory School", "Heschel", "Horace Mann", "HSMSE", "Hunter College High School", "MCSM", "Packer Collegiate", "Ramaz", "Regis High School", "Riverdale Country School", "SAR High School", "Schechter", "Stuyvesant", "The Geneva School of Manhattan"]
  let teamsList = ["Followers of Jesus", "(B)eagles", "(Sh)eagles", "Aviators", "Bardbarians", "Blue Demons (Bx)", "Blue Demons (Gx)", "Blue Devils", "Disco Tech", "Dragons", "Eagles", "Falcons", "Halcyons", "Heat", "Knights", "Lions", "Lone Wolves", "Magic", "Owls", "Pelicans", "Rams", "Sticky Fingers (Bx)", "Sticky Fingers (Gx)", "Sting", "Tech Support", "Tech Support (B)", "Titans (Bx)", "Ultimaidens"]
 
   function handleClick() {
@@ -65,12 +75,12 @@ function RegistrationPage() {
               </option>
             ))}
           </select>
-        </div> 
+        </div>
         <div> 
           <h2 className="drop-down-title">School</h2>
           <select onChange={handleSchoolChange} className="select-menus">
             <option value="">-- Select a school --</option>
-            {schoolsList.map((school) => (
+            {schooList.map((school) => (
               <option key={school} value={school}>
                 {school}
               </option>

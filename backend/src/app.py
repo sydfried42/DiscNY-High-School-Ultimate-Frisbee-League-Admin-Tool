@@ -82,13 +82,18 @@ def all_schools():
         db.session.commit()
         return new_school.to_dict(), 200
 
-# 'GET' by id
-@app.route('/schools/<int:id>', methods=['GET'])
+# 'GET' and 'DELETE' by id
+@app.route('/schools/<int:id>', methods=['GET', 'DELETE'])
 def school_by_id(id):
     school = School.query.filter(School.id == id).first()
     if not school:
         return {'error': 'school not found'}, 404
-    return school.to_dict(), 200
+    if request.method == 'GET':
+        return school.to_dict(), 200
+    if request.method == 'DELETE':
+        db.session.delete(school)
+        db.session.commit()
+        return {}, 204
 
 
 # DIVISIONS
@@ -112,12 +117,17 @@ def all_divisions():
         return new_division.to_dict(), 200
 
 # 'GET' and 'DELETE' by id
-@app.route('/divisions/<int:id>', methods=['GET'])
+@app.route('/divisions/<int:id>', methods=['GET', 'DELETE'])
 def division_by_id(id):
     division = Division.query.filter(Division.id == id).first()
     if not division:
         return {'error': 'division not found'}, 404
-    return division.to_dict(), 200
+    elif request.method == 'GET':
+        return division.to_dict(), 200
+    elif request.method == 'DELETE':
+        db.session.delete(division)
+        db.session.commit()
+        return {}, 204
 
 
 # PLAYERS

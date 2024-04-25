@@ -13,7 +13,7 @@ class Player(db.Model, SerializerMixin):
     email = db.Column(db.String)
     birthday = db.Column(db.String)
     grade = db.Column(db.String)
-    is_captain = db.Column(db.String)
+    is_captain = db.Column(db.Boolean)
 
     #foreign key
     team_id = db.Column(db.Integer, db.ForeignKey('teams.id'))

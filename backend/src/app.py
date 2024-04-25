@@ -111,7 +111,7 @@ def all_divisions():
         db.session.commit()
         return new_division.to_dict(), 200
 
-# 'GET' by id
+# 'GET' and 'DELETE' by id
 @app.route('/divisions/<int:id>', methods=['GET'])
 def division_by_id(id):
     division = Division.query.filter(Division.id == id).first()

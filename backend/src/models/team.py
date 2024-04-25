@@ -7,7 +7,7 @@ class Team(db.Model, SerializerMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
-    registration = db.Column(db.String)
+    registration = db.Column(db.Boolean)
 
     #foreign key
     school_id = db.Column(db.Integer, db.ForeignKey('schools.id'))

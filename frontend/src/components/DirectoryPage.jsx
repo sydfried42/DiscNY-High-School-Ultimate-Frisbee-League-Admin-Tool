@@ -1,10 +1,12 @@
 import React from 'react';
-import DirectoryList from './DirectoryList';
+import TeamList from './TeamList';
 
 function DirectoryPage() {
+  //move state and useEffects here, pass as props
+
   return (
     <div>
-      <DirectoryList />
+      <TeamList />
     </div>
   )
 }

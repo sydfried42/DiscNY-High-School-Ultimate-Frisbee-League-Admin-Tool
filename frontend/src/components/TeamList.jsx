@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import DirectoryCoachItem from './DirectoryCoachItem.jsx';
 import DirectoryPlayerItem from './DirectoryPlayerItem.jsx';
 
-function DirectoryList() {
+function TeamList() {
 
   const [playerRows, setPlayerRows] = useState([])
   const [coachRows, setCoachRows] = useState([])
@@ -36,7 +36,7 @@ function DirectoryList() {
           <th className="directory-heading">Pronouns</th>
           <th className="directory-heading">USAU Number</th>
           <th className="directory-heading">Team Role</th>
-        </tr>{
+        </tr>{ // this will change to what the prop is
           coachRows.map((coachRow)=>
           <DirectoryCoachItem 
             key={coachRow.id}
@@ -78,4 +78,4 @@ function DirectoryList() {
   )
 }
 
-export default DirectoryList
+export default TeamList

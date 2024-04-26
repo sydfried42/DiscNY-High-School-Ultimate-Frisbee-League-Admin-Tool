@@ -45,7 +45,9 @@ def all_teams():
         try:
             new_team = Team(
                 name=json_data.get('name'),
-                registration=json_data.get('registration')
+                registration=json_data.get('registration'),
+                division_id=json_data.get('division_id'),
+                school_id=json_data.get('school_id')
             )
         except ValueError as e:
             return {'errors': [str(e)]}, 400
@@ -53,14 +55,18 @@ def all_teams():
         db.session.commit()
         return new_team.to_dict(), 200
 
-# 'GET' by id
-@app.route('/teams/<int:id>', methods=['GET'])
+# 'GET' and 'DELETE' by id
+@app.route('/teams/<int:id>', methods=['GET', 'DELETE'])
 def team_by_id(id):
     team = Team.query.filter(Team.id == id).first()
     if not team:
         return {'error': 'team not found'}, 404
-    return team.to_dict(), 200
-
+    if request.method == 'GET':
+        return team.to_dict(), 200
+    if request.method == 'DELETE':
+        db.session.delete(team)
+        db.session.commit()
+        return {}, 204
 
 # SCHOOLS
 # 'GET' and 'POST' all

@@ -14,6 +14,7 @@ function RegistrationPage() {
   const [schooList, setSchooList] = useState([]);
   const [team, setTeam] = useState("");
 
+  // to GET a full array of objects from divisions
   useEffect(()=> {
     fetch("http://127.0.0.1:5555/divisions")
     .then(response=>response.json())
@@ -22,7 +23,7 @@ function RegistrationPage() {
       setDivList(data.map((item)=>item.name))
     })},
   []);
-
+  // to GET a full array of objects from schools
   useEffect(()=> {
     fetch("http://127.0.0.1:5555/schools")
     .then(response=>response.json())

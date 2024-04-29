@@ -13,35 +13,59 @@ function RegistrationPage() {
   const [school, setSchool] = useState("");
   const [schooList, setSchooList] = useState([]);
   const [team, setTeam] = useState("");
+  const [teamList, setTeamList] = useState([]);
+  const [teamNamesByDivision, setTeamNamesByDivision] = useState({})
 
-  // to GET a full array of objects from divisions
-  useEffect(()=> {
+  // to GET a full array of objects from divisions and schools from divisions
+  useEffect(() => {
     fetch("http://127.0.0.1:5555/divisions")
-    .then(response=>response.json())
-    .then(data=>{
-      console.log(data)
-      setDivList(data.map((item)=>item.name))
-    })},
-  []);
+      .then(response => response.json())
+      .then(data => {
+        // Update division list
+        const divisionNames = data.map(item => item.name);
+        setDivList(divisionNames);
+
+        // Organize teams by division
+        const teamsByDivision = {};
+        data.forEach(division => {
+          const divisionName = division.name;
+          const teamNames = division.teams.map(team => team.name);
+          teamsByDivision[divisionName] = teamNames;
+        });
+
+        // Set state with teams organized by division
+        setTeamNamesByDivision(teamsByDivision);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+  }, []);
+
   // to GET a full array of objects from schools
   useEffect(()=> {
     fetch("http://127.0.0.1:5555/schools")
     .then(response=>response.json())
     .then(data=>{
-      console.log(data)
+      // console.log(data)
       setSchooList(data.map((item)=>item.name))
     })},
   []);
 
   // pull for team
-
-
+  useEffect(()=> {
+    fetch("http://127.0.0.1:5555/teams")
+    .then(response=>response.json())
+    .then(data=>{
+      // console.log(data)
+      setTeamList(data.map((item)=>item.name))
+    })},
+  []);
 
 //  let divisionsList = ["Club Girls/Non-Binary", "Club Open A", "Club Open B", "Interscholastic Open"] 
 
  // for phase-5 replace this with the database
 //  let schoolsList = ["Avenues the World School", "Bard Early College High School", "Baruch College Campus High School", "Beacon", "Berkeley Carroll", "Bronx High School of Science", "Brooklyn Latin", "Brooklyn Technical High School", "Columbia Secondary School", "Edward R. Murrow High School", "Fieldston", "Followers of Jesus School", "Fordham Preparatory School", "Heschel", "Horace Mann", "HSMSE", "Hunter College High School", "MCSM", "Packer Collegiate", "Ramaz", "Regis High School", "Riverdale Country School", "SAR High School", "Schechter", "Stuyvesant", "The Geneva School of Manhattan"]
- let teamsList = ["Followers of Jesus", "(B)eagles", "(Sh)eagles", "Aviators", "Bardbarians", "Blue Demons (Bx)", "Blue Demons (Gx)", "Blue Devils", "Disco Tech", "Dragons", "Eagles", "Falcons", "Halcyons", "Heat", "Knights", "Lions", "Lone Wolves", "Magic", "Owls", "Pelicans", "Rams", "Sticky Fingers (Bx)", "Sticky Fingers (Gx)", "Sting", "Tech Support", "Tech Support (B)", "Titans (Bx)", "Ultimaidens"]
+//  let teamsList = ["Followers of Jesus", "(B)eagles", "(Sh)eagles", "Aviators", "Bardbarians", "Blue Demons (Bx)", "Blue Demons (Gx)", "Blue Devils", "Disco Tech", "Dragons", "Eagles", "Falcons", "Halcyons", "Heat", "Knights", "Lions", "Lone Wolves", "Magic", "Owls", "Pelicans", "Rams", "Sticky Fingers (Bx)", "Sticky Fingers (Gx)", "Sting", "Tech Support", "Tech Support (B)", "Titans (Bx)", "Ultimaidens"]
 
   function handleClick() {
     setShowCoachForm((showCoachForm) => !showCoachForm);
@@ -61,6 +85,9 @@ function RegistrationPage() {
     const selectedTeam = e.target.value;
     setTeam(selectedTeam);
   }
+
+  console.log(teamListByDiv)
+  
 
   return (
     <div>
@@ -92,9 +119,9 @@ function RegistrationPage() {
           <h2 className="drop-down-title">Team Name</h2>
           <select onChange={handleTeamChange} className="select-menus">
             <option value="">-- Select a team --</option>
-            {teamsList.map((team) => (
-              <option key={team} value={team}>
-                {team}
+            {teamNamesByDivision[division].map((teamName, index) => (
+              <option key={index} value={teamName}>
+                {teamName}
               </option>
             ))}
           </select>

@@ -18,6 +18,10 @@ function PlayerForm({ currentTeamPlayers, setCurrentTeamPlayers }) {
     e.preventDefault();
     setCurrentTeamPlayers([...currentTeamPlayers, newPlayer])
   }
+
+  const handleToggleCaptain = () => {
+    setNewPlayer({ ...newPlayer, is_captain: !newPlayer.is_captain });
+  };
   
   
   
@@ -99,16 +103,17 @@ function PlayerForm({ currentTeamPlayers, setCurrentTeamPlayers }) {
             setNewPlayer({ ...newPlayer, grade: e.target.value })
           }
         ></input>
-        <label htmlFor="is_captain">is_captain </label>
-        <input
-          type="text" // change to bool
-          name="is_captain"
-          placeholder="Yes/No"
-          value={newPlayer.is_captain}
-          onChange={(e) =>
-            setNewPlayer({ ...newPlayer, is_captain: e.target.value })
-          }
-        ></input>
+        {/* Toggle is_captain button */}
+        <div className="isCaptainToggle">
+          <label htmlFor="is_captain">Captain:</label>
+          <button
+            type="button"
+            onClick={handleToggleCaptain}
+            style={{ backgroundColor: newPlayer.is_captain ? 'green' : 'red' }}
+          >
+            {newPlayer.is_captain ? 'Yes' : 'No'}
+          </button>
+        </div>
         <br></br>
         <br></br>
 

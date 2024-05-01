@@ -1,145 +1,136 @@
-import React, { useState, useEffect } from 'react'
-import CoachForm from './CoachForm'
-import PlayerForm from './PlayerForm'
-import CreateTeamList from './CreateTeamList'
+import React, { useState, useEffect } from 'react';
+import CoachForm from './CoachForm';
+import PlayerForm from './PlayerForm';
+import CreateTeamList from './CreateTeamList';
 
 function RegistrationPage() {
-
   const [showCoachForm, setShowCoachForm] = useState(false);
   const [currentTeamPlayers, setCurrentTeamPlayers] = useState([]);
   const [currentTeamCoaches, setCurrentTeamCoaches] = useState([]);
-  const [division, setDivision] = useState("");
   const [divList, setDivList] = useState([]);
-  const [school, setSchool] = useState("");
   const [schooList, setSchooList] = useState([]);
-  const [team, setTeam] = useState("");
-  const [teamList, setTeamList] = useState([]);
-  const [teamNamesByDivision, setTeamNamesByDivision] = useState({})
+  const [division, setDivision] = useState({});
+  const [schoolListByDivision, setSchoolListByDivision] = useState([]);
+  const [school, setSchool] = useState('');
+  const [team, setTeam] = useState({});
 
-  // to GET a full array of objects from divisions and schools from divisions
+  // Fetch divisions and schools data on component mount
   useEffect(() => {
     fetch("http://127.0.0.1:5555/divisions")
       .then(response => response.json())
-      .then(data => {
-        // Update division list
-        const divisionNames = data.map(item => item.name);
-        setDivList(divisionNames);
+      .then(data => setDivList(data))
+      .catch(error => console.error('Error fetching divisions:', error));
 
-        // Organize teams by division
-        const teamsByDivision = {};
-        data.forEach(division => {
-          const divisionName = division.name;
-          const teamNames = division.teams.map(team => team.name);
-          teamsByDivision[divisionName] = teamNames;
-        });
-
-        // Set state with teams organized by division
-        setTeamNamesByDivision(teamsByDivision);
-      })
-      .catch(error => {
-        console.error('Error fetching data:', error);
-      });
+    fetch("http://127.0.0.1:5555/schools")
+      .then(response => response.json())
+      .then(data => setSchooList(data))
+      .catch(error => console.error('Error fetching schools:', error));
   }, []);
 
-  // to GET a full array of objects from schools
-  useEffect(()=> {
-    fetch("http://127.0.0.1:5555/schools")
-    .then(response=>response.json())
-    .then(data=>{
-      // console.log(data)
-      setSchooList(data.map((item)=>item.name))
-    })},
-  []);
-
-  // pull for team
-  useEffect(()=> {
-    fetch("http://127.0.0.1:5555/teams")
-    .then(response=>response.json())
-    .then(data=>{
-      // console.log(data)
-      setTeamList(data.map((item)=>item.name))
-    })},
-  []);
-
-//  let divisionsList = ["Club Girls/Non-Binary", "Club Open A", "Club Open B", "Interscholastic Open"] 
-
- // for phase-5 replace this with the database
-//  let schoolsList = ["Avenues the World School", "Bard Early College High School", "Baruch College Campus High School", "Beacon", "Berkeley Carroll", "Bronx High School of Science", "Brooklyn Latin", "Brooklyn Technical High School", "Columbia Secondary School", "Edward R. Murrow High School", "Fieldston", "Followers of Jesus School", "Fordham Preparatory School", "Heschel", "Horace Mann", "HSMSE", "Hunter College High School", "MCSM", "Packer Collegiate", "Ramaz", "Regis High School", "Riverdale Country School", "SAR High School", "Schechter", "Stuyvesant", "The Geneva School of Manhattan"]
-//  let teamsList = ["Followers of Jesus", "(B)eagles", "(Sh)eagles", "Aviators", "Bardbarians", "Blue Demons (Bx)", "Blue Demons (Gx)", "Blue Devils", "Disco Tech", "Dragons", "Eagles", "Falcons", "Halcyons", "Heat", "Knights", "Lions", "Lone Wolves", "Magic", "Owls", "Pelicans", "Rams", "Sticky Fingers (Bx)", "Sticky Fingers (Gx)", "Sting", "Tech Support", "Tech Support (B)", "Titans (Bx)", "Ultimaidens"]
-
-  function handleClick() {
-    setShowCoachForm((showCoachForm) => !showCoachForm);
-  }
-
-  function handleDivisionChange(e) {
-    const selectedDivision = e.target.value;
-    setDivision(selectedDivision);
-  }
+  // Event handler for division selection change
+  const handleDivisionChange = (e) => {
+    const selectedDivision = divList.find(division => division.id == e.target.value);
+    setDivision(selectedDivision || {});
+    
+    // Filter schools based on selected division
+    if (selectedDivision) {
+      const filteredSchools = schooList.filter(school => {
+        return selectedDivision.teams.some(team => team.school_id === school.id);
+      });
+      setSchoolListByDivision(filteredSchools);
+    } else {
+      setSchoolListByDivision([]);
+    }
+  };
   
-  function handleSchoolChange(e) {
+  // Event handler for school selection change
+  const handleSchoolChange = (e) => {
     const selectedSchool = e.target.value;
     setSchool(selectedSchool);
-  }
+  };
 
-  function handleTeamChange(e) {
-    const selectedTeam = e.target.value;
+  // Event handler for team selection change
+  const handleTeamChange = (e) => {
+    const selectedTeam = division.teams.find((team) => team.id == e.target.value);
+    if (selectedTeam && selectedTeam.school && selectedTeam.school.name) {
+      setSchool(selectedTeam.school.name);
+    }
     setTeam(selectedTeam);
-  }
+  };
 
-  console.log(teamListByDiv)
-  
+  // Toggle coach/player form display
+  const handleClick = () => {
+    setShowCoachForm(show => !show);
+  };
 
   return (
     <div>
-        <h1 className="title">Registration Page</h1>
+      <h1 className="title">Registration Page</h1>
       <div className='reg_division_school_team'>
         <div> 
           <h2 className="drop-down-title">Division</h2>
           <select onChange={handleDivisionChange} className="select-menus">
             <option value="">-- Select a division --</option>
-            {divList.map((division) => (
-              <option key={division} value={division}>
-                {division}
+            {divList.map(division => (
+              <option key={division.id} value={division.id}>
+                {division.name}
               </option>
             ))}
           </select>
         </div>
-        <div> 
-          <h2 className="drop-down-title">School</h2>
-          <select onChange={handleSchoolChange} className="select-menus">
-            <option value="">-- Select a school --</option>
-            {schooList.map((school) => (
-              <option key={school} value={school}>
-                {school}
-              </option>
-            ))}
-          </select>
-        </div> 
+        {/* {division.id && (
+          <div> 
+            <h2 className="drop-down-title">School</h2>
+            <select onChange={handleSchoolChange} className="select-menus">
+              <option value="">-- Select a school --</option>
+              {schoolListByDivision.map(school => (
+                <option key={school.id} value={school.id}>
+                  {school.name}
+                </option>
+              ))}
+            </select>
+          </div>
+        )} */}
         <div>
           <h2 className="drop-down-title">Team Name</h2>
+          {/* Display teams based on selected division */}
           <select onChange={handleTeamChange} className="select-menus">
             <option value="">-- Select a team --</option>
-            {teamNamesByDivision[division].map((teamName, index) => (
-              <option key={index} value={teamName}>
-                {teamName}
+            {division.teams && division.teams.map(team => (
+              <option key={team.id} value={team.id}>
+                {team.name}
               </option>
             ))}
           </select>
         </div>
       </div>
-        <br></br>
-        <br></br>
-        <br></br>
-        <div className='toggle'>
-          <button onClick={handleClick}>{showCoachForm ? "Add a Player" : "Add a Coach"}</button>
-        </div>
+      <br></br>
+      <br></br>
+      <br></br>
+      <div className='toggle'>
+        <button onClick={handleClick}>{showCoachForm ? "Add a Player" : "Add a Coach"}</button>
+      </div>
       <div className='player_coach_form'>
-        {showCoachForm ? <CoachForm currentTeamCoaches={currentTeamCoaches} setCurrentTeamCoaches={setCurrentTeamCoaches}/> : <PlayerForm currentTeamPlayers={currentTeamPlayers} setCurrentTeamPlayers={setCurrentTeamPlayers}/>}
-        <CreateTeamList className="teamList" division={division} school={school} team={team} currentTeamPlayers={currentTeamPlayers} setCurrentTeamPlayers={setCurrentTeamPlayers} currentTeamCoaches={currentTeamCoaches} setCurrentTeamCoaches={setCurrentTeamCoaches}/> 
+        {/* Conditionally render CoachForm or PlayerForm based on showCoachForm state */}
+        {showCoachForm ? (
+          <CoachForm currentTeamCoaches={currentTeamCoaches} setCurrentTeamCoaches={setCurrentTeamCoaches} />
+        ) : (
+          <PlayerForm currentTeamPlayers={currentTeamPlayers} setCurrentTeamPlayers={setCurrentTeamPlayers} />
+        )}
+        {/* Pass division, school, and team info to CreateTeamList */}
+        <CreateTeamList
+          className="teamList"
+          division={division.name}
+          school={school}
+          team={team.name}
+          currentTeamPlayers={currentTeamPlayers}
+          setCurrentTeamPlayers={setCurrentTeamPlayers}
+          currentTeamCoaches={currentTeamCoaches}
+          setCurrentTeamCoaches={setCurrentTeamCoaches}
+        />
       </div> 
     </div>
-  )
+  );
 }
 
-export default RegistrationPage
-
+export default RegistrationPage;

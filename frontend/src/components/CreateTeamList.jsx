@@ -41,7 +41,7 @@ function CreateTeamList({ currentTeamPlayers, currentTeamCoaches, setCurrentTeam
   return (
     <div className='createTeamList'>
         <h2 className="form-title">Current Team</h2>
-        <div>{division ? division : "Please select division above"} ~ {school ? school : "Please select school above"} ~ {team ? team : "Please select team above"}</div>
+        <div>{division ? division : "Please select division above"} ~ {school ? school : ""} ~ {team ? team : "Please select team above"}</div>
         <br></br>
         <div className='currentTeam'>
             <div>

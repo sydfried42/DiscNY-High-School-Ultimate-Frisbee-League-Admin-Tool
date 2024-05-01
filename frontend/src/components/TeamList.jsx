@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import DirectoryCoachItem from './DirectoryCoachItem.jsx';
 import DirectoryPlayerItem from './DirectoryPlayerItem.jsx';
 
-function TeamList() {
+function TeamList({id, name}) {
 
   const [playerRows, setPlayerRows] = useState([])
   const [coachRows, setCoachRows] = useState([])
@@ -29,7 +29,13 @@ function TeamList() {
   return (
     <div>
       <table className="directory-table">
-        <h2 className="table-title">League Coaches</h2>
+        <h2 className="table-title">{name}</h2>
+        <tr className="directory-heading">
+          <th className="directory-heading">{/* do i want anything? */}</th>
+        </tr>
+      </table>
+      <table className="directory-table">
+        <h3 className="table-title">Coaches</h3>
         <tr className="directory-heading">
           <th className="directory-heading">First Name</th>
           <th className="directory-heading">Last Name</th>
@@ -50,7 +56,7 @@ function TeamList() {
           )}
       </table>
       <table className="directory-table">
-        <h2 className="table-title">League Players</h2>
+        <h3 className="table-title">Players</h3>
         <tr className="directory-heading">
           <th className="directory-heading">First Name</th>
           <th className="directory-heading">Last Name</th>

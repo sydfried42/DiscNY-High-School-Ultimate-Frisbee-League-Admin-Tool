@@ -9,6 +9,7 @@ class Player(db.Model, SerializerMixin):
     first_name = db.Column(db.String)
     last_name = db.Column(db.String)
     pronouns = db.Column(db.String)
+    jersey_number = db.Column(db.Integer)
     usau = db.Column(db.Integer, unique=True)
     email = db.Column(db.String)
     birthday = db.Column(db.String)

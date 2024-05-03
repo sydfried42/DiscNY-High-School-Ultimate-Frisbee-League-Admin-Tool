@@ -11,6 +11,7 @@ class Coach(db.Model, SerializerMixin):
     pronouns = db.Column(db.String)
     usau = db.Column(db.Integer, unique=True)
     team_role = db.Column(db.String)
+    email = db.Column(db.String)
 
     #foreign key
     team_id = db.Column(db.Integer, db.ForeignKey('teams.id'))
@@ -22,6 +23,11 @@ class Coach(db.Model, SerializerMixin):
     serialize_rules = ['-team.coaches']
 
     # validations
+    @validates('email')
+    def validate_email(self, key, address):
+        if '@' not in address:
+            raise ValueError("enter valid email")
+        return address
 
 
     def __repr__(self):

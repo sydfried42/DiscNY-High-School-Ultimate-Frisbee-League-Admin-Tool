@@ -151,6 +151,7 @@ def all_players():
                 first_name=json_data.get('first_name'),
                 last_name=json_data.get('last_name'),
                 pronouns=json_data.get('pronouns'),
+                jersey_number=json_data.get('jersey_number'),
                 usau=json_data.get('usau'),
                 email=json_data.get('email'),
                 birthday=json_data.get('birthday'),
@@ -206,7 +207,8 @@ def all_coaches():
                 last_name=json_data.get('last_name'),
                 pronouns=json_data.get('pronouns'),
                 usau=json_data.get('usau'),
-                team_role=json_data.get('team_role')
+                team_role=json_data.get('team_role'),
+                email=json_data.get('email')
             )
         except ValueError as e:
             return {'errors': [str(e)]}, 400

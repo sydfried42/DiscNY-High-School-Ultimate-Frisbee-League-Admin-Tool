@@ -2,13 +2,16 @@
 .nav-bar {
   padding: 10px;
   border-bottom: 5px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .nav-link{
   display: inline-block;
   box-sizing: border-box;
   border-radius: 5px;
-  padding: 5px;
+  padding: 5px 25px;
   margin: 0 6px 6px;
   background: #BC8F8F;
   text-decoration: none;
@@ -18,7 +21,7 @@
 }
 
 .active {
-  color: greenyellow;
+  color: #ecf39e;
 }
 
 /* Styles for the header component */

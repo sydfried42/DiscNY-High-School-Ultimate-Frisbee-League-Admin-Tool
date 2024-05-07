@@ -1,11 +1,14 @@
 import React from 'react';
+import Typography from '@mui/material/Typography';
 
 const CodeOfConduct = () => {
   const pdfUrl = 'http://localhost:5173/HSLRules2024.pdf'
 
   return (
     <div>
-      <h1>Code of Conduct</h1>
+      <Typography variant="h2" gutterBottom style={{ marginBottom: '20px' }}>
+      Code of Conduct
+      </Typography>
       <div style={{ width: '100%', height: '800px' }}>
         <embed src={pdfUrl} type="application/pdf" width="100%" height="100%" />
       </div>

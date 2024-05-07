@@ -21,8 +21,7 @@ function DirectoryPage() {
         High School League Directory
       </Typography>
       <Search search={search} setSearch={setSearch} />
-      <bk></bk>
-      <bk></bk>
+     
       {teamRows
         .filter(team => team.name.toLowerCase().includes(search.toLowerCase()))
         .map(team => (

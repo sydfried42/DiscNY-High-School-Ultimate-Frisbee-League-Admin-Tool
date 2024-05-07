@@ -1,24 +1,26 @@
-import React from 'react'
-import { NavLink } from "react-router-dom";
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import Typography from '@mui/material/Typography';
 
+function StyledNavLink({ to, text }) {
+  return (
+    <Typography variant="overline" display="block" gutterBottom>
+      <NavLink to={to} className="nav-link">
+        {text}
+      </NavLink>
+    </Typography>
+  );
+}
 
 function NavBar() {
   return (
     <nav className="nav-bar">
-        <NavLink to="/home" className="nav-link">
-            Home
-        </NavLink>
-        <NavLink to="/registration" className="nav-link">
-            Registration
-        </NavLink>
-        <NavLink to="/directory" className="nav-link">
-            Directory
-        </NavLink>
-        <NavLink to="/code-of-conduct" className="nav-link">
-            Code of Conduct
-        </NavLink>
+      <StyledNavLink to="/home" text="Home" />
+      <StyledNavLink to="/registration" text="Registration" />
+      <StyledNavLink to="/directory" text="Directory" />
+      <StyledNavLink to="/code-of-conduct" text="Code of Conduct" />
     </nav>
   );
-};
+}
 
-export default NavBar
+export default NavBar;

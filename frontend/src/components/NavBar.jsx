@@ -17,9 +17,6 @@ function NavBar() {
         <NavLink to="/code-of-conduct" className="nav-link">
             Code of Conduct
         </NavLink>
-        <NavLink to='/test' className="nav-link">
-            test
-        </NavLink>
     </nav>
   );
 };

@@ -1,56 +1,28 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import React from 'react';
+import { createRoot } from 'react-dom/client'; // Import createRoot from react-dom/client
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import App from './App.jsx';
+import './index.css';
 import Home from './components/Home.jsx';
 import CodeOfConduct from './components/CodeOfConduct.jsx';
 import DirectoryPage from './components/DirectoryPage.jsx';
 import RegistrationPage from './components/RegistrationPage.jsx';
-import Testpage from './components/Testpage.jsx';
 
-
-function Main(){
-  const routes = createBrowserRouter([
-    {
-      path: '/',
-      element: <App />,
-      children: [
-        {
-          path: '/home',
-          element: <Home />,
-        },
-        {
-          path: '/code-of-conduct',
-          element: <CodeOfConduct />,
-        },
-        {
-          path: '/directory',
-          element: <DirectoryPage />,
-        },
-        {
-          path: '/registration',
-          element: <RegistrationPage />,
-        },
-        {
-          path: '/test',
-          element: <Testpage />,
-        },
-      ],
-    },
-    {
-      path: '*',
-      element: <h1>404 This Page Does Not Exist</h1>,
-    },
-  ]);
-
+function Main() {
   return (
-    <React.StrictMode>
-      <RouterProvider router={routes} />
-    </React.StrictMode>
+    <Router>
+      <Routes>
+        <Route path="/" element={<App />}>
+          <Route path="/home" element={<Home />} />
+          <Route path="/code-of-conduct" element={<CodeOfConduct />} />
+          <Route path="/directory" element={<DirectoryPage />} />
+          <Route path="/registration" element={<RegistrationPage />} />
+        </Route>
+        <Route path="*" element={<h1>404 This Page Does Not Exist</h1>} />
+      </Routes>
+    </Router>
   );
-};
+}
 
-ReactDOM.createRoot(document.getElementById('root')).render(<Main />);
-
-
+const root = createRoot(document.getElementById('root'));
+root.render(<Main />);

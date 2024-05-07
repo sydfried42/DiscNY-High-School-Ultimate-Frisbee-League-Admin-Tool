@@ -1,11 +1,3 @@
-#root {
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-  background-color: #778899
-}
-
 /* Navigation Bar Styling */
 .nav-bar {
   padding: 10px;
@@ -29,144 +21,20 @@
   color: greenyellow;
 }
 
-
-/* Directory Styling */
-.directory-row, .directory-heading {
-  border-bottom: 1px solid white;
-}
-
-.directory-table {
-  border-collapse: collapse;
-  width: 100%
-}
-
-.directory-data, .directory-heading {
-  padding: 5px;
-  text-align: left;
-}
-
-.directory-row:hover {background-color: #8FBC8F}
-
-.table-title {
-  text-align: left
-}
-
-/* Code of Conduct Styling */
-.code-of-conduct {
-  align-items: center;
-}
-
-/*Header Styling*/
+/* Styles for the header component */
 .header {
-  border-bottom: 5px solid white;
-  padding: 5px; /* Add a semicolon here */
-  height: 20vh; /* 20% of the viewport height */
-  background-color: #333; /* Example background color */
-  overflow: hidden; /* Hide overflowing content (in this case, the image) */
+  position: relative; /* Positioning context for absolute child */
+  width: 100%; /* Set the header width to 20% of the viewport width */
+  height: 30vh; /* Set header height to full viewport height */
+  overflow: hidden; /* Hide any content that overflows the header */
 }
 
-.header-image {
-  width: 100%; /* Make the image width 100% of its container (header) */
-  height: 100%; /* Make the image height 100% of its container (header) */
-  object-fit: cover; /* Crop the image to fit the container without stretching */
-  object-position: center bottom; /* Position the image at the center bottom */
-}
-
-/* Footer Styling */
-.footer {
-  border-top: 5px solid white;
-}
-
-/* Registration Styling */
-.reg_division_school_team {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-
-.player_coach_form {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  gap: 30px;
-  margin: 20px;
-}
-
-.createTeamList {
-  padding: 30px;
-  border-style: double;
-  width: 40%;
-  border-radius: 10px;
-  align-items: center;
-}
-
-.currentTeam {
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  gap: 60px;
-}
-
-.fullSubmit {
-  display: flex;
-  justify-content: right;
-  align-items: end;
-  margin-right: 170px
-}
-
-.toggle {
-  display: flex;
-  justify-content: left;
-  margin-left: 185px;
-}
-
-.newPlayer {
-  padding: 30px;
-  width: 400px;
-}
-
-.newCoach {
-  padding: 30px;
-  width: 400px;
-}
-
-.newCoach, .newPlayer {
-  border-style: double;
-  border-radius: 10px;
-}
-
-.pform {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  padding: 0 60px;
-}
-
-.cform {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  padding: 0 60px;
-}
-
-.title {
-  font-size: 30px;
-  text-decoration: underline overline;
-}
-
-.form-title, .table-title {
-  text-decoration: underline
-}
-
-.drop-down-title {
-  text-decoration: underline
-}
-
-.select-menus {
-  height: 25px;
-  border-radius: 5px
-}
-
-.delete-button {
-  justify-content: center;
+/* Style for the image inside the header */
+.header img {
+  position: absolute; /* Position the image absolutely within the header */
+  top: 0;
+  left: 0;
+  width: 100%; /* Make the image width fill the entire header */
+  height: auto; /* Make the image height fill the entire header */
+  object-fit: cover; /* Scale the image to cover the entire header */
 }

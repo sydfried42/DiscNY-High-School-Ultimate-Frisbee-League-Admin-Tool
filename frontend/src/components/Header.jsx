@@ -4,7 +4,7 @@ function Header() {
   
   return (
     <div className="header">
-      <img src='./assets/headerImg.jpg' alt="Header Image" />
+      <img src='http://localhost:5173/headerImg.jpg' alt="Header Image" />
     </div>
   )
 }

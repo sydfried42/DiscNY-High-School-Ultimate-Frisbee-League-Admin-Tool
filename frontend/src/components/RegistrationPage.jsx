@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import CoachForm from './CoachForm';
 import PlayerForm from './PlayerForm';
 import CreateTeamList from './CreateTeamList';
+import Button from '@mui/material/Button';
 
 function RegistrationPage() {
   // State variables for managing form and data
@@ -91,7 +92,13 @@ function RegistrationPage() {
       <br></br>
       <br></br>
       <div className='toggle'>
-        <button onClick={handleClick}>{showCoachForm ? "Add a Player" : "Add a Coach"}</button>
+      <Button
+        variant="contained"
+        disableElevation
+        onClick={handleClick}
+        >
+        {showCoachForm ? "Add a Player" : "Add a Coach"}
+      </Button>
       </div>
       <div className='player_coach_form'>
         {/* Conditionally render CoachForm or PlayerForm based on showCoachForm state */}

@@ -1,7 +1,9 @@
-import React from 'react'
-import CoachItem from './CoachItem'
-import PlayerItem from './PlayerItem'
-// will need to import useEffect
+import React from 'react';
+import CoachItem from './CoachItem';
+import PlayerItem from './PlayerItem';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+
 
 function CreateTeamList({ currentTeamPlayers, currentTeamCoaches, setCurrentTeamPlayers, setCurrentTeamCoaches, division, school, team }) {
 
@@ -40,13 +42,19 @@ function CreateTeamList({ currentTeamPlayers, currentTeamCoaches, setCurrentTeam
 
   return (
     <div className='createTeamList'>
-        <h2 className="form-title">Current Team</h2>
-        <div>{division ? division : "Please select division above"} ~ {school ? school : ""} ~ {team ? team : "Please select team above"}</div>
+        <Typography variant="h3" gutterBottom>
+        Current Team
+        </Typography>
+        <Typography variant="subtitle1" gutterBottom>
+        {division ? division : "Please select division above"} ~ {school ? school : ""} ~ {team ? team : "Please select team above"}
+        </Typography>
         <br></br>
         <div className='currentTeam'>
             <div>
-                <h2>Players:</h2>{
-                currentTeamPlayers.map((currentTeamPlayer)=>
+                <Typography variant="h4" gutterBottom>
+                Players:
+                </Typography>
+                {currentTeamPlayers.map((currentTeamPlayer)=>
                 <PlayerItem 
                     key={currentTeamPlayer.id}
                     currentTeamPlayer={currentTeamPlayer}
@@ -55,8 +63,10 @@ function CreateTeamList({ currentTeamPlayers, currentTeamCoaches, setCurrentTeam
                 )}
             </div>
             <div>
-                <h2>Coaches:</h2>{
-                currentTeamCoaches.map((currentTeamCoach)=>
+                <Typography variant="h4" gutterBottom>
+                Coaches:
+                </Typography>
+                {currentTeamCoaches.map((currentTeamCoach)=>
                 <CoachItem 
                     key={currentTeamCoach.id}
                     currentTeamCoach={currentTeamCoach}
@@ -67,7 +77,14 @@ function CreateTeamList({ currentTeamPlayers, currentTeamCoaches, setCurrentTeam
         </div>
         <br></br>
         <div className='fullSubmit'>
-            <button type="submit" onClick={handleSubmit}>Create Team</button>
+        <Button
+            type="submit"   // Set type="submit" for form submission
+            variant="contained"
+            disableElevation
+            onClick={handleSubmit}
+         >
+            Create Team
+        </Button>
         </div>
     </div>
   )

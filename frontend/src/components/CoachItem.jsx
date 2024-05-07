@@ -1,10 +1,19 @@
-import React from 'react'
+import React from 'react';
+import Button from '@mui/material/Button';
+import DeleteIcon from '@mui/icons-material/Delete';
+import SendIcon from '@mui/icons-material/Send';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
 
 function CoachItem({ currentTeamCoach, handleDeleteCoach }) {
   return (
-    <div className="pre-submission-item">
-        <h3>{currentTeamCoach.first_name} {currentTeamCoach.last_name} {currentTeamCoach.pronouns}</h3>
-        <button onClick={()=>handleDeleteCoach(currentTeamCoach)} className="delete-button">X</button>
+    <div class='item'>
+        <Typography variant="h5" gutterBottom>
+        {currentTeamCoach.first_name} {currentTeamCoach.last_name} ({currentTeamCoach.pronouns})
+        </Typography>
+        <Stack direction="row" spacing={2}>
+          <Button onClick={()=>handleDeleteCoach(currentTeamCoach)} variant="outlined" startIcon={<DeleteIcon />}>Delete</Button>
+        </Stack>
     </div>
   )
 }

@@ -3,7 +3,7 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Typography from '@mui/material/Typography';
-
+import Button from '@mui/material/Button';
 
 
 
@@ -180,7 +180,11 @@ function PlayerForm({ currentTeamPlayers, setCurrentTeamPlayers }) {
         <br></br>
         <br></br>
 
-        <button type="submit">Add Player</button>
+        <Button 
+          onClick={handleSubmit} // Attach handleSubmit function to button click event
+        >
+          Add Player
+        </Button>
       </ul>
       </form>
     </div>

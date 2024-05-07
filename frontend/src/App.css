@@ -126,3 +126,11 @@ select{
 .form-style-1 .required{
 	color:red;
 }
+
+/* Styles for building team */
+.item {
+	display: flex;
+	flex-direction: row;
+	padding: 7px;
+}
+

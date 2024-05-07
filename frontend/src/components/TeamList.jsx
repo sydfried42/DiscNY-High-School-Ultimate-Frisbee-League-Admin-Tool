@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import DirectoryCoachItem from './DirectoryCoachItem';
 import DirectoryPlayerItem from './DirectoryPlayerItem';
 
-function TeamList({ id, name, search }) {
+function TeamList({ team, search }) {
   const [playerRows, setPlayerRows] = useState([]);
   const [coachRows, setCoachRows] = useState([]);
 
@@ -22,12 +22,22 @@ function TeamList({ id, name, search }) {
       });
   }, []);
 
+
+
   return (
     <div>
+      <h1>{team.name} - {team.school.name}</h1>
       <table className="directory-table">
-        <h2 className="table-title">{name}</h2>
+        <h2 className="table-title">Coaches</h2>
         {/* Render Coach Rows */}
-        {coachRows
+        <tr className="directory-heading">
+          <th className="directory-heading">First Name</th>
+          <th className="directory-heading">Last Name</th>
+          <th className="directory-heading">Pronouns</th>
+          <th className="directory-heading">USAU Number</th>
+          <th className="directory-heading">Email</th>
+          <th className="directory-heading">Team Role</th>
+        </tr>{coachRows
           .filter(coach =>
             `${coach.first_name} ${coach.last_name}`.toLowerCase().includes(search.toLowerCase())
           )
@@ -47,7 +57,16 @@ function TeamList({ id, name, search }) {
       <table className="directory-table">
         <h2 className="table-title">Players</h2>
         {/* Render Player Rows */}
-        {playerRows
+        <tr className="directory-heading">
+          <th className="directory-heading">First Name</th>
+          <th className="directory-heading">Last Name</th>
+          <th className="directory-heading">Pronouns</th>
+          <th className="directory-heading">USAU Number</th>
+          <th className="directory-heading">Email</th>
+          <th className="directory-heading">Birthday</th>
+          <th className="directory-heading">Grade</th>
+          <th className="directory-heading">Jersey Number</th>
+        </tr>{playerRows
           .filter(player =>
             `${player.first_name} ${player.last_name}`.toLowerCase().includes(search.toLowerCase())
           )

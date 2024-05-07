@@ -21,7 +21,7 @@ function DirectoryPage() {
       {teamRows
         .filter(team => team.name.toLowerCase().includes(search.toLowerCase()))
         .map(team => (
-          <TeamList key={team.id} id={team.id} name={team.name} search={search} />
+          <TeamList key={team.id} team={team} search={search} />
         ))}
     </div>
   );

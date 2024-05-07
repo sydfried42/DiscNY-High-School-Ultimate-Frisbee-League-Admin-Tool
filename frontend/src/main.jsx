@@ -7,6 +7,8 @@ import Home from './components/Home.jsx';
 import CodeOfConduct from './components/CodeOfConduct.jsx';
 import DirectoryPage from './components/DirectoryPage.jsx';
 import RegistrationPage from './components/RegistrationPage.jsx';
+import Testpage from './components/Testpage.jsx';
+
 
 function Main(){
   const routes = createBrowserRouter([
@@ -29,6 +31,10 @@ function Main(){
         {
           path: '/registration',
           element: <RegistrationPage />,
+        },
+        {
+          path: '/test',
+          element: <Testpage />,
         },
       ],
     },

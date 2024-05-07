@@ -59,11 +59,17 @@
 /*Header Styling*/
 .header {
   border-bottom: 5px solid white;
-  padding: 5px
+  padding: 5px; /* Add a semicolon here */
+  height: 20vh; /* 20% of the viewport height */
+  background-color: #333; /* Example background color */
+  overflow: hidden; /* Hide overflowing content (in this case, the image) */
 }
 
 .header-image {
-  width: 60%;
+  width: 100%; /* Make the image width 100% of its container (header) */
+  height: 100%; /* Make the image height 100% of its container (header) */
+  object-fit: cover; /* Crop the image to fit the container without stretching */
+  object-position: center bottom; /* Position the image at the center bottom */
 }
 
 /* Footer Styling */

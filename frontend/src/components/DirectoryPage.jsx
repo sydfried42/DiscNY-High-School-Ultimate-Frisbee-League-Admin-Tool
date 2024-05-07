@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import TeamList from './TeamList';
 import Search from './Search';
+import Typography from '@mui/material/Typography';
 
 function DirectoryPage() {
   const [teamRows, setTeamRows] = useState([]);
@@ -16,8 +17,12 @@ function DirectoryPage() {
 
   return (
     <div>
+      <Typography variant="h1" gutterBottom>
+        High School League Directory
+      </Typography>
       <Search search={search} setSearch={setSearch} />
-
+      <bk></bk>
+      <bk></bk>
       {teamRows
         .filter(team => team.name.toLowerCase().includes(search.toLowerCase()))
         .map(team => (

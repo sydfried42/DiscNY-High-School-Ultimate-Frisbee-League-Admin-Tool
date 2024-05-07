@@ -1,46 +1,8 @@
-import React, { useState } from 'react'
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 
-
-
-
-/* setting the form states */
-function PlayerForm({ currentTeamPlayers, setCurrentTeamPlayers }) {
-  const [newPlayer, setNewPlayer] = useState({
-    first_name: '',
-    last_name: '',
-    pronouns: '',
-    usau: '',
-    email: '',
-    birthday: '',
-    grade: '',
-    jersey_number: '',
-  });
-  
-  const [isCaptain, setIsCaptain] = useState(false);
-
-  /* setting the form submit */
-  function handleSubmit(e) {
-    e.preventDefault();
-    setCurrentTeamPlayers([...currentTeamPlayers, newPlayer])
-  }
-
-  const handleToggleCaptain = () => {
-    setIsCaptain(!isCaptain, { ...newPlayer, is_captain: !newPlayer.is_captain }); // Toggle the current value of isCaptain
-  };
-
-  const handleChange = (event) => {
-    setIsCaptain(event.target.checked); // Update isCaptain based on checkbox state
-  };
-
-  
-  
-  return (
-    <div className="newPlayer">
-      <h2 className="form-title">New Player</h2>
-      <form onSubmit={handleSubmit}>
+<form onSubmit={handleSubmit}>
 <ul class="form-style-1">
     <li>
         <label htmlFor="first name, last name">
@@ -158,30 +120,14 @@ function PlayerForm({ currentTeamPlayers, setCurrentTeamPlayers }) {
             setNewPlayer({ ...newPlayer, jersey_number: e.target.value })
           } />
     </li>
+   
+    <li>
+        <input type="submit" value="Submit" />
+    </li>
+</ul>
+</form>
 
-
-    <div>
-      {/* Render FormControlLabel with Checkbox */}
-      <FormControlLabel
-        control={
-          <Checkbox
-            checked={isCaptain}
-            onChange={handleChange} // Use handleChange to update isCaptain
-            name="isCaptain"
-            color="primary"
-          />
-        }
-        label="Captain"
-      />
-    </div>
-        <br></br>
-        <br></br>
-
-        <button type="submit">Add Player</button>
-      </ul>
-      </form>
-    </div>
-  )
-}
-
-export default PlayerForm;
+{/* <FormGroup>
+      <FormControlLabel 
+      control={<Checkbox defaultChecked />} label="Label" />
+    </FormGroup> */}

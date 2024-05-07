@@ -1,4 +1,8 @@
 import React, { useState } from 'react'
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+import Typography from '@mui/material/Typography';
 
 /* setting the form states */
 function CoachForm({ currentTeamCoaches, setCurrentTeamCoaches }) {
@@ -20,76 +24,103 @@ function CoachForm({ currentTeamCoaches, setCurrentTeamCoaches }) {
   
   
   return (
-    <div className="newCoach">
-      <h2 className="form-title">New Coach</h2>
-      <form className='cform' onSubmit={handleSubmit}>
-        <label htmlFor="first name">First Name</label>
+    <div>
+      <Typography variant="h3" gutterBottom>
+      New Coach
+      </Typography>
+      <form onSubmit={handleSubmit}>
+<ul class="form-style-1">
+    <li>
+        <label htmlFor="first name, last name">
+            Full Name 
+            <span class="required">*</span>
+        </label>
         <input
-          required
-          type="text"
-          name="first name"
-          placeholder="Jane"
-          value={newCoach.first_name}
-          onChange={(e) =>
+            required 
+            type="text" 
+            name="field1" 
+            class="field-divided" 
+            placeholder="First"
+            value={newCoach.first_name}
+            onChange={(e) =>
             setNewCoach({ ...newCoach, first_name: e.target.value })
-          }
-        ></input>
-        <label htmlFor="last name">Last Name</label>
+          } /> 
         <input
-          required
-          type="text"
-          name="last name"
-          placeholder="Doe"
-          value={newCoach.last_name}
-          onChange={(e) =>
+            required 
+            type="text" 
+            name="field2" 
+            class="field-divided" 
+            placeholder="Last"
+            value={newCoach.last_name}
+            onChange={(e) =>
             setNewCoach({ ...newCoach, last_name: e.target.value })
-          }
-        ></input>
-        <label htmlFor="pronouns">Pronouns </label>
-        <input
-          type="text"
-          name="pronouns"
-          placeholder="(They/Them)"
-          value={newCoach.pronouns}
-          onChange={(e) =>
+          } />
+    </li>
+    <li>
+        <label htmlFor="pronouns">
+            Pronouns 
+            <span class="required">*</span>
+        </label>
+        <input 
+            type="text" 
+            name="field3" 
+            class="field-long"
+            placeholder="(They/Them)"
+            value={newCoach.pronouns}
+            onChange={(e) =>
             setNewCoach({ ...newCoach, pronouns: e.target.value })
-          }
-        ></input>
-        <label htmlFor="usau">USAU Number </label>
-        <input
-          type="number"
-          name="usau"
-          placeholder="12345"
-          value={newCoach.usau}
-          onChange={(e) =>
+          } />
+    </li>
+    <li>
+        <label htmlFor="usau">
+            USAU Number 
+            <span class="required">*</span>
+        </label>
+        <input 
+            type="number" 
+            name="field4" 
+            class="field-long"
+            placeholder="12345"
+            value={newCoach.usau}
+            onChange={(e) =>
             setNewCoach({ ...newCoach, usau: e.target.value })
-          }
-        ></input>
-        <label htmlFor="email">Email </label>
-        <input
-          required
-          type="text"
-          name="email"
-          placeholder="johnny.disc@discny.org"
-          value={newCoach.email}
-          onChange={(e) =>
+          } />
+    </li>
+    <li>
+        <label htmlFor="email">
+            Email 
+            <span class="required">*</span>
+        </label>
+        <input 
+            type="email" 
+            name="field5" 
+            class="field-long"
+            placeholder="johnny.disc@discny.org"
+            value={newCoach.email}
+            onChange={(e) =>
             setNewCoach({ ...newCoach, email: e.target.value })
-          }
-        ></input>
-        <label htmlFor="team_role">Team Role </label>
-        <input
-          type="text"
-          name="team_role"
-          placeholder="Head Coach"
-          value={newCoach.team_role}
+          } />
+    </li>
+    <li>
+        <label htmlFor="team_role">
+            Team Role 
+            <span class="required">*</span>
+        </label>
+        <input 
+            type="text" 
+            name="field6" 
+            class="field-long"
+            placeholder="Head Coach"
+            value={newCoach.team_role}
           onChange={(e) =>
             setNewCoach({ ...newCoach, team_role: e.target.value })
-          }
-        ></input>
+          } />
+    </li>
         <br></br>
         <br></br>
 
         <button type="submit">Add Coach</button>
+      </ul>
       </form>
     </div>
   )

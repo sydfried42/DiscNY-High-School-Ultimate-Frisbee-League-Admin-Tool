@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
+import Typography from '@mui/material/Typography';
 
 
 
@@ -38,8 +39,10 @@ function PlayerForm({ currentTeamPlayers, setCurrentTeamPlayers }) {
   
   
   return (
-    <div className="newPlayer">
-      <h2 className="form-title">New Player</h2>
+    <div>
+      <Typography variant="h3" gutterBottom>
+      New Player
+      </Typography>
       <form onSubmit={handleSubmit}>
 <ul class="form-style-1">
     <li>

@@ -1,31 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import TeamList from './TeamList';
+import Search from './Search';
 
 function DirectoryPage() {
-  //move state and useEffects here, pass as props
+  const [teamRows, setTeamRows] = useState([]);
+  const [search, setSearch] = useState('');
 
-  const [teamRows, setTeamRows] = useState([])
-
-  useEffect(()=> {
+  useEffect(() => {
     fetch("http://127.0.0.1:5555/teams")
-    .then(response=>response.json())
-    .then(data=>{
-      console.log(data)
-      setTeamRows(data)
-    })},
-  []);
+      .then(response => response.json())
+      .then(data => {
+        setTeamRows(data);
+      });
+  }, []);
 
   return (
     <div>
-      {teamRows.map((teamRow)=>
-      <TeamList 
-        key={teamRow.id}
-        id={teamRow.id}
-        name={teamRow.name}
-      />
-      )}
+      <Search search={search} setSearch={setSearch} />
+
+      {teamRows
+        .filter(team => team.name.toLowerCase().includes(search.toLowerCase()))
+        .map(team => (
+          <TeamList key={team.id} id={team.id} name={team.name} search={search} />
+        ))}
     </div>
-  )
+  );
 }
 
-export default DirectoryPage
+export default DirectoryPage;

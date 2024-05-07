@@ -13,6 +13,7 @@ function RegistrationPage() {
   const [schoolListByDivision, setSchoolListByDivision] = useState([]);
   const [school, setSchool] = useState('');
   const [team, setTeam] = useState({});
+  
 
   // Fetch divisions and schools data on component mount
   useEffect(() => {

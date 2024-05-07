@@ -1,87 +1,72 @@
 import React, { useState, useEffect } from 'react';
-import DirectoryCoachItem from './DirectoryCoachItem.jsx';
-import DirectoryPlayerItem from './DirectoryPlayerItem.jsx';
+import DirectoryCoachItem from './DirectoryCoachItem';
+import DirectoryPlayerItem from './DirectoryPlayerItem';
 
-function TeamList({id, name}) {
+function TeamList({ id, name, search }) {
+  const [playerRows, setPlayerRows] = useState([]);
+  const [coachRows, setCoachRows] = useState([]);
 
-  const [playerRows, setPlayerRows] = useState([])
-  const [coachRows, setCoachRows] = useState([])
-
-  useEffect(()=> {
+  useEffect(() => {
     fetch("http://127.0.0.1:5555/coaches")
-    .then(response=>response.json())
-    .then(data=>{
-      console.log(data)
-      setCoachRows(data)
-    })},
-  []);
+      .then(response => response.json())
+      .then(data => {
+        setCoachRows(data);
+      });
+  }, []);
 
-  useEffect(()=> {
+  useEffect(() => {
     fetch("http://127.0.0.1:5555/players")
-    .then(response=>response.json())
-    .then(data=>{
-      console.log(data)
-      setPlayerRows(data)
-    })},
-  []);
-
+      .then(response => response.json())
+      .then(data => {
+        setPlayerRows(data);
+      });
+  }, []);
 
   return (
     <div>
       <table className="directory-table">
         <h2 className="table-title">{name}</h2>
-        <tr className="directory-heading">
-          <th className="directory-heading">{/* do i want anything? */}</th>
-        </tr>
+        {/* Render Coach Rows */}
+        {coachRows
+          .filter(coach =>
+            `${coach.first_name} ${coach.last_name}`.toLowerCase().includes(search.toLowerCase())
+          )
+          .map(coach => (
+            <DirectoryCoachItem
+              key={coach.id}
+              first_name={coach.first_name}
+              last_name={coach.last_name}
+              pronouns={coach.pronouns}
+              usau={coach.usau}
+              email={coach.email}
+              team_role={coach.team_role}
+            />
+          ))}
       </table>
+
       <table className="directory-table">
-        <h3 className="table-title">Coaches</h3>
-        <tr className="directory-heading">
-          <th className="directory-heading">First Name</th>
-          <th className="directory-heading">Last Name</th>
-          <th className="directory-heading">Pronouns</th>
-          <th className="directory-heading">USAU Number</th>
-          <th className="directory-heading">Team Role</th>
-        </tr>{ // this will change to what the prop is
-          coachRows.map((coachRow)=>
-          <DirectoryCoachItem 
-            key={coachRow.id}
-            id={coachRow.id}
-            first_name={coachRow.first_name}
-            last_name={coachRow.last_name}
-            pronouns={coachRow.pronouns}
-            usau={coachRow.usau}
-            team_role={coachRow.team_role}
-          />
-          )}
-      </table>
-      <table className="directory-table">
-        <h3 className="table-title">Players</h3>
-        <tr className="directory-heading">
-          <th className="directory-heading">First Name</th>
-          <th className="directory-heading">Last Name</th>
-          <th className="directory-heading">Pronouns</th>
-          <th className="directory-heading">USAU Number</th>
-          <th className="directory-heading">Email</th>
-          <th className="directory-heading">Birthday</th>
-          <th className="directory-heading">Grade</th>
-        </tr>{
-          playerRows.map((playerRow)=>
-          <DirectoryPlayerItem 
-            key={playerRow.id}
-            id={playerRow.id}
-            first_name={playerRow.first_name}
-            last_name={playerRow.last_name}
-            pronouns={playerRow.pronouns}
-            usau={playerRow.usau}
-            email={playerRow.email}
-            birthday={playerRow.birthday}
-            grade={playerRow.grade}
-          />
-          )}
+        <h2 className="table-title">Players</h2>
+        {/* Render Player Rows */}
+        {playerRows
+          .filter(player =>
+            `${player.first_name} ${player.last_name}`.toLowerCase().includes(search.toLowerCase())
+          )
+          .map(player => (
+            <DirectoryPlayerItem
+              key={player.id}
+              first_name={player.first_name}
+              last_name={player.last_name}
+              pronouns={player.pronouns}
+              usau={player.usau}
+              email={player.email}
+              birthday={player.birthday}
+              grade={player.grade}
+              jersey_number={player.jersey_number}
+            />
+          ))}
       </table>
     </div>
-  )
+  );
 }
 
-export default TeamList
+export default TeamList;

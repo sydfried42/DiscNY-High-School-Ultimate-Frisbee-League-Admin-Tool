@@ -4,6 +4,7 @@ import PlayerForm from './PlayerForm';
 import CreateTeamList from './CreateTeamList';
 
 function RegistrationPage() {
+  // State variables for managing form and data
   const [showCoachForm, setShowCoachForm] = useState(false);
   const [currentTeamPlayers, setCurrentTeamPlayers] = useState([]);
   const [currentTeamCoaches, setCurrentTeamCoaches] = useState([]);
@@ -13,7 +14,6 @@ function RegistrationPage() {
   const [schoolListByDivision, setSchoolListByDivision] = useState([]);
   const [school, setSchool] = useState('');
   const [team, setTeam] = useState({});
-  
 
   // Fetch divisions and schools data on component mount
   useEffect(() => {
@@ -44,12 +44,6 @@ function RegistrationPage() {
     }
   };
   
-  // Event handler for school selection change
-  const handleSchoolChange = (e) => {
-    const selectedSchool = e.target.value;
-    setSchool(selectedSchool);
-  };
-
   // Event handler for team selection change
   const handleTeamChange = (e) => {
     const selectedTeam = division.teams.find((team) => team.id == e.target.value);
@@ -64,6 +58,7 @@ function RegistrationPage() {
     setShowCoachForm(show => !show);
   };
 
+  // Render RegistrationPage component
   return (
     <div>
       <h1 className="title">Registration Page</h1>
@@ -79,19 +74,6 @@ function RegistrationPage() {
             ))}
           </select>
         </div>
-        {/* {division.id && (
-          <div> 
-            <h2 className="drop-down-title">School</h2>
-            <select onChange={handleSchoolChange} className="select-menus">
-              <option value="">-- Select a school --</option>
-              {schoolListByDivision.map(school => (
-                <option key={school.id} value={school.id}>
-                  {school.name}
-                </option>
-              ))}
-            </select>
-          </div>
-        )} */}
         <div>
           <h2 className="drop-down-title">Team Name</h2>
           {/* Display teams based on selected division */}

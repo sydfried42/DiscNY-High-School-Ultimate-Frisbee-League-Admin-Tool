@@ -1,14 +1,20 @@
-.centered-h1, .footer {
+
+.centered-h1 {
 	text-align: center;
   }
+
+.body{
+	padding: 25px;
+	background-color: #cad2c5;
+}
 
 /* Navigation Bar Styling */
 .nav-bar {
   padding: 10px;
-  border-bottom: 5px solid white;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #cad2c5;
 }
 
 .nav-link{
@@ -34,6 +40,7 @@
   width: 100%; /* Set the header width to 20% of the viewport width */
   height: 30vh; /* Set header height to full viewport height */
   overflow: hidden; /* Hide any content that overflows the header */
+  border-bottom: 5px solid #BC8F8F;
 }
 
 /* Style for the image inside the header */
@@ -42,9 +49,18 @@
   top: 0;
   left: 0;
   width: 100%; /* Make the image width fill the entire header */
-  height: auto; /* Make the image height fill the entire header */
+  height: 98%; /* Make the image height fill the entire header */
   object-fit: cover; /* Scale the image to cover the entire header */
 }
+
+/* Styles for the footer component */
+.footer {
+	text-align: center;
+	border-top: 5px solid #BC8F8F;
+	padding: 10px;
+	background-color: #cad2c5;
+}
+
 /* Registration Page*/
 .reg_division_school_team{
 	display: flex;

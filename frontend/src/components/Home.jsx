@@ -10,13 +10,16 @@ import Typography from '@mui/material/Typography';
 
 export default function AccordionUsage() {
   return (
-    <div>
-      <Box sx={{ width: '100%' }}>
+    <div class='body'>
+      <Box sx={{ width: '100%', paddingBottom: '20px' }}>
         <Typography variant="h1" gutterBottom className="centered-h1">
         Welcome to DiscNY's High School League 2025 Homepage!
         </Typography>
-        <Typography variant="h5" gutterBottom className="centered-h1">
+        <Typography variant="h4" gutterBottom className="centered-h1">
         This is our revamped hub for DiscNY's High School League programming and information.
+        </Typography>
+        <Typography variant="h6" gutterBottom className="centered-h1">
+        During the season this space will host our game schedule and the week's weather.
         </Typography>
       </Box>
       <Accordion>

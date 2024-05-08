@@ -67,7 +67,7 @@ function RegistrationPage() {
 
   // Render RegistrationPage component
   return (
-    <div>
+    <div class='body'>
       <Typography variant="h1" gutterBottom className="centered-h1">
       Registration Page
       </Typography>

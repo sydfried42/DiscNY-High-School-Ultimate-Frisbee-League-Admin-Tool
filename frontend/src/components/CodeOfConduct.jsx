@@ -5,7 +5,7 @@ const CodeOfConduct = () => {
   const pdfUrl = 'http://localhost:5173/HSLRules2024.pdf'
 
   return (
-    <div>
+    <div class='body'>
       <Typography className="centered-h1" variant="h1" gutterBottom style={{ marginBottom: '20px' }}>
       Code of Conduct
       </Typography>

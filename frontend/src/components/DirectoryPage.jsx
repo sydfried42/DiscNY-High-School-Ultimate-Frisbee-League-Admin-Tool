@@ -16,7 +16,7 @@ function DirectoryPage() {
   }, []);
 
   return (
-    <div>
+    <div class='body'>
       <Typography variant="h1" gutterBottom className="centered-h1">
         High School League Directory
       </Typography>

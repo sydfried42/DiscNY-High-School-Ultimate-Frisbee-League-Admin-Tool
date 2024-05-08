@@ -17,16 +17,17 @@ function DirectoryPage() {
 
   return (
     <div>
-      <Typography variant="h1" gutterBottom>
+      <Typography variant="h1" gutterBottom className="centered-h1">
         High School League Directory
       </Typography>
       <Search search={search} setSearch={setSearch} />
-     
-      {teamRows
-        .filter(team => team.name.toLowerCase().includes(search.toLowerCase()))
-        .map(team => (
-          <TeamList key={team.id} team={team} search={search} />
-        ))}
+      <div class='directoryList'> 
+        {teamRows
+          .filter(team => team.name.toLowerCase().includes(search.toLowerCase()))
+          .map(team => (
+            <TeamList key={team.id} team={team} search={search} />
+          ))}
+      </div>
     </div>
   );
 }

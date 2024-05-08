@@ -12,10 +12,10 @@ export default function AccordionUsage() {
   return (
     <div>
       <Box sx={{ width: '100%' }}>
-        <Typography variant="h1" gutterBottom>
+        <Typography variant="h1" gutterBottom className="centered-h1">
         Welcome to DiscNY's High School League 2025 Homepage!
         </Typography>
-        <Typography variant="h5" gutterBottom>
+        <Typography variant="h5" gutterBottom className="centered-h1">
         This is our revamped hub for DiscNY's High School League programming and information.
         </Typography>
       </Box>

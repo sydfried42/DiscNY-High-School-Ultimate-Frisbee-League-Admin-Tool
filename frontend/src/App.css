@@ -1,3 +1,7 @@
+.centered-h1, .footer {
+	text-align: center;
+  }
+
 /* Navigation Bar Styling */
 .nav-bar {
   padding: 10px;
@@ -40,6 +44,26 @@
   width: 100%; /* Make the image width fill the entire header */
   height: auto; /* Make the image height fill the entire header */
   object-fit: cover; /* Scale the image to cover the entire header */
+}
+/* Registration Page*/
+.reg_division_school_team{
+	display: flex;
+	flex-direction: column;
+  	justify-content: center;
+  	align-items: center;
+}
+
+.toggle {
+	padding-left: 300px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+
+.player_coach_form{
+	display: flex;
+  	justify-content: space-evenly;
+  	align-items: flex-start;
 }
 
 /* Styles for forms */
@@ -134,3 +158,33 @@ select{
 	padding: 7px;
 }
 
+/* Styles for Directory Page */
+/* Styles for Search Bar */
+.search {
+	display: block;
+	margin: 20px auto;
+	width: 100vw;
+	height: 4vh;
+	padding: 0 5px;
+	text-align: center;
+	padding-bottom: 20px;
+  }
+  
+  .search input {
+	border-radius: 10px;
+	width: 40vw;
+	height: 3vh;
+	margin-right: 15px;
+	font-optical-sizing: auto;
+	font-style: normal;
+	padding: 5px 15px;
+  }
+
+/* Styles for Grid */
+.directoryList{
+	padding: 50px;
+}
+
+.eachteam{
+	padding-bottom: 50px;
+}

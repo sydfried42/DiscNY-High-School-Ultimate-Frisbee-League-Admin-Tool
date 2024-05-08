@@ -3,6 +3,12 @@ import CoachForm from './CoachForm';
 import PlayerForm from './PlayerForm';
 import CreateTeamList from './CreateTeamList';
 import Button from '@mui/material/Button';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormHelperText from '@mui/material/FormHelperText';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import Typography from '@mui/material/Typography';
 
 function RegistrationPage() {
   // State variables for managing form and data
@@ -62,43 +68,62 @@ function RegistrationPage() {
   // Render RegistrationPage component
   return (
     <div>
-      <h1 className="title">Registration Page</h1>
+      <Typography variant="h1" gutterBottom className="centered-h1">
+      Registration Page
+      </Typography>
       <div className='reg_division_school_team'>
         <div> 
-          <h2 className="drop-down-title">Division</h2>
-          <select onChange={handleDivisionChange} className="select-menus">
-            <option value="">-- Select a division --</option>
-            {divList.map(division => (
-              <option key={division.id} value={division.id}>
-                {division.name}
-              </option>
-            ))}
-          </select>
-        </div>
+        <FormControl required sx={{ m: 1, minWidth: 200 }}>
+          <InputLabel id="division-select-label">Division</InputLabel>
+          <Select
+            labelId="division-select-label"
+            id="division-select"
+            onChange={handleDivisionChange}
+            className="select-menus"
+          >
+            <MenuItem value="">
+              <em>-- Select a division --</em>
+            </MenuItem>
+        {   divList.map((division) => (
+            <MenuItem key={division.id} value={division.id}>
+            {division.name}
+            </MenuItem>
+        ))}
+          </Select>
+        <FormHelperText>Required</FormHelperText>
+        </FormControl>
+      </div>
         <div>
-          <h2 className="drop-down-title">Team Name</h2>
-          {/* Display teams based on selected division */}
-          <select onChange={handleTeamChange} className="select-menus">
-            <option value="">-- Select a team --</option>
-            {division.teams && division.teams.map(team => (
-              <option key={team.id} value={team.id}>
-                {team.name}
-              </option>
-            ))}
-          </select>
+        <FormControl required sx={{ m: 1, minWidth: 200 }}>
+          <InputLabel id="team-select-label">Team Name</InputLabel>
+          <Select
+            labelId="team-select-label"
+            id="team-select"
+            onChange={handleTeamChange}
+            className="select-menus"
+          >
+            <MenuItem value="">
+              <em>-- Select a team --</em>
+            </MenuItem>
+            {division.teams &&
+              division.teams.map((team) => (
+                <MenuItem key={team.id} value={team.id}>
+                  {team.name}
+                </MenuItem>
+              ))}
+          </Select>
+          <FormHelperText>Required</FormHelperText>
+        </FormControl>
         </div>
       </div>
-      <br></br>
-      <br></br>
-      <br></br>
       <div className='toggle'>
-      <Button
-        variant="contained"
-        disableElevation
-        onClick={handleClick}
-        >
-        {showCoachForm ? "Add a Player" : "Add a Coach"}
-      </Button>
+        <Button
+          variant="contained"
+          disableElevation
+          onClick={handleClick}
+          >
+          {showCoachForm ? "Add a Player" : "Add a Coach"}
+        </Button>
       </div>
       <div className='player_coach_form'>
         {/* Conditionally render CoachForm or PlayerForm based on showCoachForm state */}

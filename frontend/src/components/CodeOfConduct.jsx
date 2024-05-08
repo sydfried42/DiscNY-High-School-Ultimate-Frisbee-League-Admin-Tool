@@ -6,7 +6,7 @@ const CodeOfConduct = () => {
 
   return (
     <div>
-      <Typography variant="h2" gutterBottom style={{ marginBottom: '20px' }}>
+      <Typography className="centered-h1" variant="h1" gutterBottom style={{ marginBottom: '20px' }}>
       Code of Conduct
       </Typography>
       <div style={{ width: '100%', height: '800px' }}>

@@ -54,7 +54,7 @@ function TeamList({ team, search }) {
 
 
   return (
-    <div>
+    <div class='eachteam'>
     {/* Team Name and School */}
     <Typography variant="h2" gutterBottom style={{ marginBottom: '20px' }}>
       {team.name} - {team.school.name}
@@ -62,7 +62,7 @@ function TeamList({ team, search }) {
 
     {/* Coaches Table */}
     <Typography variant="h4" gutterBottom style={{ marginTop: '20px' }}>
-      Coaches
+      Coaches:
     </Typography>
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="coaches table">
@@ -97,7 +97,7 @@ function TeamList({ team, search }) {
 
     {/* Players Table */}
     <Typography variant="h4" gutterBottom style={{ marginTop: '20px' }}>
-      Players
+      Players:
     </Typography>
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="players table">
